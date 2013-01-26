@@ -42,24 +42,18 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenManaferAssets\Level.cs" />
-    <Compile Include="ScreenManaferAssets\Menus\Instructions.cs" />
-    <Compile Include="ScreenManaferAssets\Menus\IntroScreen.cs" />
-    <Compile Include="ScreenManaferAssets\Menus\MenuOption.cs" />
-    <Compile Include="ScreenManaferAssets\Menus\PauseMenu.cs" />
     <Compile Include="BaseSprite.cs" />
     <Compile Include="ScreenManager.cs" />
     <Compile Include="Vector.cs" />
-    <Compile Include="GameObjects\Player.cs" />
     <Compile Include="SoundManager.cs" />
     <Compile Include="ScreenManaferAssets\Menu.cs" />
     <Compile Include="ScreenManaferAssets\Screen.cs" />
-    <Compile Include="GameObjects\Gameobject.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="ScreenManaferAssets\Menus\MainMenu.cs" />
     <Compile Include="EventManager\EventManager.cs" />
     <Compile Include="EventManager\Event.cs" />
     <Compile Include="EventManager\Listener.cs" />
+    <Compile Include="GameObjects\HeartBeet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
