@@ -5,6 +5,7 @@ public class GameManagerScript : MonoBehaviour
 {
 	public int fieldSize = 5;
 	public GameObject plotObject;
+	public GameObject fieldObject;
 	
 	GameObject[,] plots;
 	
@@ -18,9 +19,13 @@ public class GameManagerScript : MonoBehaviour
 		{
 			for(int j = 0; j < fieldSize; j++)
 			{
-				plots[i,j] = Instantiate(plotObject, new Vector3(i*plotObject.renderer.bounds.size.x,j*plotObject.renderer.bounds.size.y,0), Quaternion.identity) as GameObject;
+				plots[i,j] = Instantiate(plotObject, new Vector3(i*plotObject.renderer.bounds.size.x * 1.2f, j * plotObject.renderer.bounds.size.y * 1.2f, 0), Quaternion.identity) as GameObject;
 			}
 		}
+		fieldObject = Instantiate(fieldObject, Vector3.zero, Quaternion.identity) as GameObject;
+		
+		float temp = fieldObject.transform.localScale.x * 1.2f * fieldSize;
+		fieldObject.transform.localScale = new Vector3(temp, temp, 0);
 	}
 	
 	// Update is called once per frame
