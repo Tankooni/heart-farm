@@ -58,13 +58,8 @@ namespace HeartFarm
         {
             //draw each screen
             
-            foreach (Screen screen in _screens)
+            foreach (Screen screen in _screens.Reverse)
             {
-                if (screen == _screens.Peek())
-                    screen.onTop(true);
-                else
-                    screen.onTop(false);
-
                 screen.draw(spritebatch, gametime);
             }
         }

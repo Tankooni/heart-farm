@@ -57,6 +57,7 @@
     <Compile Include="ScreenManagerAssets\Screen.cs" />
     <Compile Include="ScreenManagerAssets\Menus\MainMenu.cs" />
     <Compile Include="ScreenManagerAssets\Menus\MenuOption.cs" />
+    <Compile Include="EventManager\Events\MousePosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />

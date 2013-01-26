@@ -17,10 +17,7 @@ namespace HeartFarm
 			g_EM = new EventManager();
 		}
 
-		public EventManager()
-		{
-
-		}
+		public EventManager(){}
 
 		public void AddListener (Event e, Listener l)
 		{
@@ -31,7 +28,7 @@ namespace HeartFarm
 
 		public void RemoveListener(Event e, Listener l)
 		{
-
+			//TODO: Implement this
 		}
 
 		public void QueueEvent(Event e)
@@ -41,11 +38,15 @@ namespace HeartFarm
 
 		public void Update()
 		{
+			//pop the next event in the queue
 			foreach (Event e in Events)
 			{
+				//call each listener registered to this event type
 				foreach(Listener l in EventListeners[e])
 				{
 					l.OnEvent(e);
+					if(e.isDoneProcessing)
+						break;
 				}
 				Events.Dequeue();
 			}
