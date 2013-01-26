@@ -18,11 +18,16 @@ namespace HeartFarm
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 
+		//Matrix SpriteScale = Matrix.Identity;
+		
+		ScreenManager screenManager;
+		InputManager inputManager;
+
 		public Game1 ()
 		{
 			graphics = new GraphicsDeviceManager (this);
-			Content.RootDirectory = "Content";	            
-			graphics.IsFullScreen = true;		
+			Content.RootDirectory = "Content";
+			//graphics.IsFullScreen = true;
 		}
 
 		/// <summary>
@@ -35,7 +40,18 @@ namespace HeartFarm
 		{
 			// TODO: Add your initialization logic here
 			base.Initialize ();
-				
+
+//			graphics.IsFullScreen = true; //make it full screen!!
+//			
+//			graphics.PreferredBackBufferWidth = graphics.GraphicsDevice.DisplayMode.Width;
+//			graphics.PreferredBackBufferHeight = graphics.GraphicsDevice.DisplayMode.Height;
+
+			graphics.PreferMultiSampling = false;
+			graphics.ApplyChanges();
+
+			Engine.SoundManager.Init(Content);
+			screenManager = new ScreenManager(Content, graphics.GraphicsDevice.DisplayMode.AspectRatio);
+			inputManager = new InputManager(1);
 		}
 
 		/// <summary>
@@ -46,35 +62,43 @@ namespace HeartFarm
 		{
 			// Create a new SpriteBatch, which can be used to draw textures.
 			spriteBatch = new SpriteBatch (GraphicsDevice);
-
-			//TODO: use this.Content to load your game content here 
 		}
 
-		/// <summary>
-		/// Allows the game to run logic such as updating the world,
-		/// checking for collisions, gathering input, and playing audio.
-		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
+		bool isMusicLoaded = false;
 		protected override void Update (GameTime gameTime)
 		{
 			// For Mobile devices, this logic will close the Game when the Back button is pressed
-			if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed) {
+			if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+			{
 				Exit ();
 			}
-			// TODO: Add your update logic here			
+
+			Engine.SoundManager.gameTime = gameTime;
+
+			if (!isMusicLoaded)
+			{
+				//SoundManager.PlaySetList(new Musics[]{Musics.Chanter, Musics.Decisions});
+				isMusicLoaded = true;
+			}
+			//updates...
+			inputManager.update();
+//			if (!screenManager.update(inputManager))
+//				Exit();
+					
 			base.Update (gameTime);
 		}
 
-		/// <summary>
-		/// This is called when the game should draw itself.
-		/// </summary>
-		/// <param name="gameTime">Provides a snapshot of timing values.</param>
 		protected override void Draw (GameTime gameTime)
 		{
 			graphics.GraphicsDevice.Clear (Color.CornflowerBlue);
-		
-			//TODO: Add your drawing code here
             
+			//spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, SpriteScale);
+			//spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, SpriteScale);
+			spriteBatch.Begin(SpriteSortMode.FrontToBack, null);
+			screenManager.draw(spriteBatch, gameTime);
+			
+			spriteBatch.End();
+
 			base.Draw (gameTime);
 		}
 	}
