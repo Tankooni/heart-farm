@@ -14,8 +14,7 @@ namespace HeartFarm
         protected List<MenuOption> menuOptions = new List<MenuOption>();
         protected short _currentSelection = 0;
 
-        public Menu(_removeScreen removeScreen, Texture2D backGround)
-            :base(removeScreen)
+        public Menu(Texture2D backGround)
         {
             _backGround = new BaseSprite(backGround);
             _backGround.LayerDepth = .2f;
@@ -68,30 +67,6 @@ namespace HeartFarm
             }
 
             return null;
-        }
-
-        public override void onTop(bool toptop)
-        {
-            if (toptop && !isOnTop)
-            {
-                foreach(MenuOption mo in menuOptions)
-                {
-                    mo.textLayer *= 5;
-                    mo.buttonLayer *= 5;
-                }
-                _backGround.LayerDepth += .2f;
-            }
-            else if(!toptop && isOnTop)
-            {
-                foreach (MenuOption mo in menuOptions)
-                {
-                    mo.textLayer /= 5;
-                    mo.buttonLayer /= 5;
-                }
-                _backGround.LayerDepth -= .2f;
-            }
-
-            isOnTop = toptop;
         }
     }
 }
