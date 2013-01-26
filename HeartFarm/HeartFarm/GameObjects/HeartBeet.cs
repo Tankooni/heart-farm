@@ -8,7 +8,11 @@ namespace HeartFarm
 		{
 
 		}
-		
+
+		public void OnEvent(Event e)
+		{
+
+		}
 	}
 }
 
