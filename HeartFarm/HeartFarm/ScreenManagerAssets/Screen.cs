@@ -9,7 +9,14 @@ namespace HeartFarm
 {
     abstract class Screen
     {
-
+		protected bool preventUpdates = false;
+		protected bool preventDrawing = false;
+		public bool PreventUpdates {
+			get { return preventUpdates;}
+		}
+		public bool PreventDrawing {
+			get { return preventDrawing;}
+		}
 
         public Screen()
         {
