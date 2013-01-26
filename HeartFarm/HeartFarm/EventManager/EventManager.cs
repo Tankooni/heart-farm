@@ -39,14 +39,15 @@ namespace HeartFarm
 			Events.Enqueue(e);
 		}
 
-		public void Update ()
+		public void Update()
 		{
 			foreach (Event e in Events)
 			{
 				foreach(Listener l in EventListeners[e])
 				{
-
+					l.OnEvent(e);
 				}
+				Events.Dequeue();
 			}
 		}
 	}

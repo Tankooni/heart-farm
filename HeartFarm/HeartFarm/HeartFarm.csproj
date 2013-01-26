@@ -46,23 +46,27 @@
     <Compile Include="ScreenManager.cs" />
     <Compile Include="Vector.cs" />
     <Compile Include="SoundManager.cs" />
-    <Compile Include="ScreenManaferAssets\Menu.cs" />
-    <Compile Include="ScreenManaferAssets\Screen.cs" />
     <Compile Include="InputManager.cs" />
-    <Compile Include="ScreenManaferAssets\Menus\MainMenu.cs" />
     <Compile Include="EventManager\EventManager.cs" />
     <Compile Include="EventManager\Event.cs" />
     <Compile Include="EventManager\Listener.cs" />
     <Compile Include="GameObjects\HeartBeet.cs" />
+    <Compile Include="EventManager\Events\ButtonPressed.cs" />
+    <Compile Include="EventManager\Events\ButtonReleased.cs" />
+    <Compile Include="ScreenManagerAssets\Menu.cs" />
+    <Compile Include="ScreenManagerAssets\Screen.cs" />
+    <Compile Include="ScreenManagerAssets\Menus\MainMenu.cs" />
+    <Compile Include="ScreenManagerAssets\Menus\MenuOption.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
-    <Folder Include="ScreenManaferAssets\" />
     <Folder Include="GameObjects\" />
     <Folder Include="EventManager\" />
+    <Folder Include="EventManager\Events\" />
+    <Folder Include="ScreenManagerAssets\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
