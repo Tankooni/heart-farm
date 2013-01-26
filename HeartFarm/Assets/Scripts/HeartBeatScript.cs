@@ -14,7 +14,7 @@ public class HeartBeatScript : MonoBehaviour {
 	double _size;
 	double _blood;
 	double _growthRate;
-	public double Size 
+	public double Size
 	{
 		get {return _size;}
 		set {_size = value;}
@@ -24,6 +24,9 @@ public class HeartBeatScript : MonoBehaviour {
 		get {return _blood;}
 		set {_blood = value;}
 	}
+	
+	//flags
+	bool drawGUI;
 	
 	// Use this for initialization
 	void Start () {
@@ -42,5 +45,21 @@ public class HeartBeatScript : MonoBehaviour {
 			_size = MAX_SIZE;
 		if(_blood > _size)
 			_blood = _size;
+	}
+	
+	void DrawGUI()
+	{
+		drawGUI = true;
+		Debug.Log("Telling beet to draw gui");
+	}
+	
+	void OnGUI()
+	{
+		if(drawGUI)
+		{
+			Debug.Log("Drawing gui!");
+			GUI.Label(new Rect(Input.mousePosition.x, Input.mousePosition.y, 200, 400), _blood.ToString());
+			drawGUI = false;
+		}
 	}
 }
