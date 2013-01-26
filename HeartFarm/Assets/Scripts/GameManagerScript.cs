@@ -6,6 +6,7 @@ public class GameManagerScript : MonoBehaviour
 	public int fieldSize = 5;
 	public GameObject plotObject;
 	public GameObject fieldObject;
+	public GameObject heartBeetObject;
 	
 	GameObject[,] plots;
 	
@@ -26,11 +27,30 @@ public class GameManagerScript : MonoBehaviour
 		
 		float temp = fieldObject.transform.localScale.x * 1.2f * fieldSize;
 		fieldObject.transform.localScale = new Vector3(temp, temp, 0);
+		
+		//make a beet
+		Instantiate(heartBeetObject, new Vector3(0, 0, -1), Quaternion.identity);
 	}
 	
 	// Update is called once per frame
 	void Update()
 	{
+		//process mouse events
+		Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
 		
+		if(Physics.Raycast(mouseRay, out hit))
+		{
+			GameObject beet = hit.collider.gameObject;
+			//if(beet.name == "
+			//show the tooltip
+			beet.SendMessage("DrawGUI");
+			//perform an action if this was a click event
+			if(Input.GetMouseButtonDown(0))
+			{
+				
+			}
+		}
 	}
+
 }
