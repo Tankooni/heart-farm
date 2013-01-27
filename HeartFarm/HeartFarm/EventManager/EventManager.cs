@@ -39,7 +39,7 @@ namespace HeartFarm
 		public void Update()
 		{
 			//pop the next event in the queue
-			while(Events.Count >= 0)
+			while(Events.Count > 0)
 			{
 				var e = Events.Peek();
 				Events.Dequeue();
