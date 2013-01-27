@@ -81,7 +81,8 @@ namespace HeartFarm
 
         public BaseSprite(ContentManager CM, String assetName)
         {
-            init(CM.Load<Texture2D>(assetName));
+
+			init(CM.Load<Texture2D>(assetName));
             
         }
         public BaseSprite(Texture2D texture)

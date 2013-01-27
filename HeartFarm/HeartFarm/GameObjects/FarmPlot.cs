@@ -18,6 +18,7 @@ namespace HeartFarm
 		{
 			//init plot sprite
 			plotSprite = new BaseSprite(Game1.g_content, "PlotTile");
+			plotSprite.Position = pos;
 		}
 
 		public void Update ()
