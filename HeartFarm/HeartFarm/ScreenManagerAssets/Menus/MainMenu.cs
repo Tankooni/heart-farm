@@ -5,13 +5,13 @@ namespace HeartFarm
 	public class MainMenu : Menu
 	{
 		public MainMenu ()
-			:base(null)
+			:base("TitleScreenBackground")
 		{
 		}
 
 		public override Screen update ()
 		{
-			throw new System.NotImplementedException ();
+			//throw new System.NotImplementedException ();
 		}
 	}
 }
