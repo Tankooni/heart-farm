@@ -8,6 +8,7 @@ namespace HeartFarm
 	public class ToolBar
 	{
 		TextureButton syringe;
+
 		public ToolBar(ContentManager CM)
 		{
 
@@ -16,7 +17,7 @@ namespace HeartFarm
 
 		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
 		{
-			syringe.Draw(gameTime, spriteBatch);
+			//syringe.Draw(gameTime, spriteBatch);
 		}
 
 		public void Update()
