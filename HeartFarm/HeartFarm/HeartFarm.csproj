@@ -63,9 +63,9 @@
     <Compile Include="ScreenManagerAssets\UIAssets\ToolBar.cs" />
     <Compile Include="EventManager\Events\MouseButtonPressed.cs" />
     <Compile Include="EventManager\Events\MouseButtonReleased.cs" />
-    <Compile Include="ScreenManagerAssets\Menus\TextureButton.cs" />
     <Compile Include="EventManager\Events\KeyboardButtonPressed.cs" />
     <Compile Include="EventManager\Events\KeyboardButtonReleased.cs" />
+    <Compile Include="ScreenManagerAssets\Menus\TextureButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />

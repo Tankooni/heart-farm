@@ -58,7 +58,7 @@ namespace HeartFarm
 			EventManager.g_EM.QueueEvent(new MousePosition(mousePos));
 
 			//queue mouse state events
-			if (currentMouseState != prevMouseState) {
+			if (!currentMouseState.Equals(prevMouseState)) {
 				//check left mouse button
 				if(currentMouseState.LeftButton != prevMouseState.LeftButton)
 				{
