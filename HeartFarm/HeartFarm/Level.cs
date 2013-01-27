@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 namespace HeartFarm
 {
-	public class Level:Screen
+	public class Level:Screen, Listener
 	{
 		FarmPlot[,] plots;
 		public static float BloodLevel = 0;
 		public float BloodTarget = 1000;
+
+		int day = 1;
 
 		public enum Tools
 		{
@@ -16,7 +18,7 @@ namespace HeartFarm
 			Scalpel
 		}
 
-		public Tools currentTool = Tools.Syringe;
+		public Tools currentTool;
 
 		public Level ()
 		{
@@ -37,6 +39,9 @@ namespace HeartFarm
 				int j = Game1.rand.Next (5);
 				plots [i, j].HeartBeet = new HeartBeet (plots [i, j].Position, this);
 			}
+
+			//add listeners
+			EventManager.g_EM.AddListener(new DayChanged(), this);
 		}
 
 		public override void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
@@ -52,9 +57,26 @@ namespace HeartFarm
 
 		public override Screen update ()
 		{
+			if (BloodLevel >= BloodTarget) {
+				//make it harder
+			} 
+
 			foreach(FarmPlot p in plots)
 				p.Update();
 			return null;
+		}
+
+		public void OnEvent (Event e)
+		{
+			if (e is DayChanged) {
+				day++;
+
+				//see if the player lost
+				if(BloodLevel < BloodTarget)
+				{
+					EventManager.g_EM.QueueEvent(new ChangeScene(new SceneGameOver()));
+				}
+			}
 		}
 	}
 }
