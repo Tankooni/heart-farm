@@ -55,7 +55,7 @@ namespace HeartFarm
 		{
 			boodles.Draw (spriteBatch, gameTime);
 			cüdles.Draw (spriteBatch, gameTime);
-			//toodles.Draw(spriteBatch, gameTime);
+			toodles.Draw(spriteBatch, gameTime);
 			Cursor.Draw (gameTime, spriteBatch);
 
 			if (toolTip != null) {
