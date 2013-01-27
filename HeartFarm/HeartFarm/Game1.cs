@@ -15,11 +15,12 @@ namespace HeartFarm
 	{
 		public static Vector ScreenSize;
 		public static ContentManager g_content;
+		public static GameTime g_time;
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		//Matrix SpriteScale = Matrix.Identity;
 		
-		Scene screenManager;
+		ScreenManager screenManager;
 		InputManager inputManager;
 
 		public Game1 ()
@@ -27,7 +28,6 @@ namespace HeartFarm
 			graphics = new GraphicsDeviceManager (this);
 			Content.RootDirectory = "Content";
 			g_content = Content;
-			graphics.PreferredBackBufferHeight = 600;
 			//graphics.IsFullScreen = true;
 		}
 		
@@ -37,29 +37,22 @@ namespace HeartFarm
 			base.Initialize ();
 
 			graphics.PreferMultiSampling = false;
-
 			graphics.ApplyChanges();
-			//graphics.IsFullScreen = true;
-			//graphics.ToggleFullScreen();
-			if(graphics.IsFullScreen)
-				Game1.ScreenSize = new Vector(graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Width, 0);
-			else
-				Game1.ScreenSize = new Vector(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+			Game1.ScreenSize = new Vector(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
 
 			Drawer.Init(spriteBatch.GraphicsDevice);
 			Engine.SoundManager.Init(Content);
-			screenManager = new Scene(Content);
+			screenManager = new ScreenManager(Content, graphics.GraphicsDevice.DisplayMode.AspectRatio);
 			inputManager = new InputManager();
 
-			//Level level1 = new Level();
+			Level level1 = new Level();
 
-			//screenManager.pushScreen(level1);
+			screenManager.pushScreen(level1);
 
 			//screenManager.pushScreen(level1.beetList);
 
-			//screenManager.pushScreen(new UI(Content));
+			screenManager.pushScreen(new UI(Content));
 
-			screenManager.pushScreen(new MainMenu());
 
 		}
 
@@ -76,6 +69,8 @@ namespace HeartFarm
 		bool isMusicLoaded = false;
 		protected override void Update (GameTime gameTime)
 		{
+			g_time = gameTime;
+
 			// For Mobile devices, this logic will close the Game when the Back button is pressed
 			if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 			{
@@ -92,15 +87,16 @@ namespace HeartFarm
 			//updates...
 			inputManager.update();
 			EventManager.g_EM.Update();
-			if (screenManager.update())
-				Exit();
+			screenManager.update();
+//			if (!screenManager.update(inputManager))
+//				Exit();
 					
 			base.Update (gameTime);
 		}
 
 		protected override void Draw (GameTime gameTime)
 		{
-			graphics.GraphicsDevice.Clear (Color.CornflowerBlue);
+			graphics.GraphicsDevice.Clear (Color.DarkViolet);
             
 			//spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, SpriteScale);
 			//spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, SpriteScale);
