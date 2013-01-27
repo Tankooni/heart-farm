@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace HeartFarm
 {
-    abstract class Screen
+    public abstract class Screen
     {
 		protected bool preventUpdates = false;
 		protected bool preventDrawing = false;

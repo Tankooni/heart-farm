@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace HeartFarm
 {
-    class InputManager
+    public class InputManager
     {
 		//stuff
 		List<Keys> activeButtons = new List<Keys>();
