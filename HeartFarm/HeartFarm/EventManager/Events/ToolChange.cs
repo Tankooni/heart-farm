@@ -5,9 +5,9 @@ namespace HeartFarm
 {
 	public class ToolChange : Event
 	{
-		public String tool;
+		public Level.Tools tool;
 		public ToolChange (){}
-		public ToolChange(String t)
+		public ToolChange(Level.Tools t)
 		{
 			tool = t;
 		}

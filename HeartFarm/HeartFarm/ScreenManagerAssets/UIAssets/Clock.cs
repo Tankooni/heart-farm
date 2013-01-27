@@ -47,7 +47,7 @@ namespace HeartFarm
 			Border.Draw(gameTime, spriteBatch);
 		}
 
-		public void Update ()
+		public void Update()
 		{
 			//Make 70 seconds days
 			Rotation += Game1.g_gameTime.ElapsedGameTime.Milliseconds / 20000f;
