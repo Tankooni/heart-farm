@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace HeartFarm
 {
-    public class InputManager
+    class InputManager
     {
 		//stuff
 		List<Keys> activeButtons = new List<Keys>();
@@ -46,11 +46,17 @@ namespace HeartFarm
 			foreach (Keys b in activeButtons) {
 				if (currentKeyState.IsKeyDown (b) != prevKeyState.IsKeyDown (b)) {
 					if (currentKeyState.IsKeyDown (b))
-						EventManager.g_EM.QueueEvent (new ButtonPressed (b));
+						EventManager.g_EM.QueueEvent (new KeyboardButtonPressed (b));
 					else
-						EventManager.g_EM.QueueEvent (new ButtonReleased (b));
+						EventManager.g_EM.QueueEvent (new KeyboardButtonReleased (b));
 				}
 			}
+
+			//queue a mouse position event
+			Mouse.POINT mousePos;
+			Mouse.GetCursorPos(out mousePos);
+			EventManager.g_EM.QueueEvent(new MousePosition(mousePos));
+
 			//queue mouse state events
 			if (currentMouseState != prevMouseState) {
 				//check left mouse button
@@ -78,11 +84,6 @@ namespace HeartFarm
 						EventManager.g_EM.QueueEvent(new MouseButtonReleased(MouseButtons.Right));
 				}
 			}
-
-			//queue a mouse position event
-			Mouse.POINT mousePos;
-			Mouse.GetCursorPos(out mousePos);
-			EventManager.g_EM.QueueEvent(new MousePosition(mousePos));
         }
     }
 }

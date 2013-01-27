@@ -51,8 +51,6 @@
     <Compile Include="EventManager\Event.cs" />
     <Compile Include="EventManager\Listener.cs" />
     <Compile Include="GameObjects\HeartBeet.cs" />
-    <Compile Include="EventManager\Events\ButtonPressed.cs" />
-    <Compile Include="EventManager\Events\ButtonReleased.cs" />
     <Compile Include="ScreenManagerAssets\Menu.cs" />
     <Compile Include="ScreenManagerAssets\Screen.cs" />
     <Compile Include="ScreenManagerAssets\Menus\MainMenu.cs" />
@@ -65,6 +63,9 @@
     <Compile Include="ScreenManagerAssets\UIAssets\ToolBar.cs" />
     <Compile Include="EventManager\Events\MouseButtonPressed.cs" />
     <Compile Include="EventManager\Events\MouseButtonReleased.cs" />
+    <Compile Include="ScreenManagerAssets\Menus\TextureButton.cs" />
+    <Compile Include="EventManager\Events\KeyboardButtonPressed.cs" />
+    <Compile Include="EventManager\Events\KeyboardButtonReleased.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />

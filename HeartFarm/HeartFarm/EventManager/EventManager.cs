@@ -19,7 +19,7 @@ namespace HeartFarm
 
 		public EventManager(){}
 
-		public void AddListener (Event e, Listener l)
+		public void AddListener(Event e, Listener l)
 		{
 			if (EventListeners.ContainsKey (e))
 				EventListeners.Add (e, new List<Listener> ());
