@@ -31,6 +31,11 @@ namespace HeartFarm
 			//TODO: Implement this
 		}
 
+		public void ClearListeners ()
+		{
+			EventListeners.Clear();
+		}
+
 		public void QueueEvent(Event e)
 		{
 			Events.Enqueue(e);

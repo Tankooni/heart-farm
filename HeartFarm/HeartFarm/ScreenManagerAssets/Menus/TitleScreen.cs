@@ -3,11 +3,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace HeartFarm
 {
-	public class MainMenu : Menu
+	public class TitleScreen : Menu, Listener
 	{
 		BaseSprite start;
 
-		public MainMenu ()
+		public TitleScreen ()
 			: base(Game1.g_content.Load<Texture2D>("TitleScreenBackground"))
 		{
 			start = new BaseSprite(Game1.g_content, "TitleScreen");
@@ -20,6 +20,10 @@ namespace HeartFarm
 			start.Origin = new Vector(start.Width/2, start.Height/2, 1);
 			start.Position = new Vector(Game1.ScreenSize.X /2 + 15, Game1.ScreenSize.Y /2 + 35, 0);
 			start.Scale = _backGround.Scale;//new Vector(scale, scale, scale);
+
+			EventManager.g_EM.AddListener(new MouseButtonReleased(), this);
+			Game1.g_inputManager.addActiveButton(Microsoft.Xna.Framework.Input.Keys.Enter);
+			EventManager.g_EM.AddListener(new KeyboardButtonReleased(), this);
 		}
 
 		public override Screen update ()
@@ -35,6 +39,16 @@ namespace HeartFarm
 
 			//draw the "Press Start!" thing and make it rotate
 			start.Draw(gametime, spriteBatch);
+		}
+
+		public void OnEvent (Event e)
+		{
+			if (e is MouseButtonReleased || 
+			    e is KeyboardButtonReleased && ((KeyboardButtonReleased)e).keyReleased == Microsoft.Xna.Framework.Input.Keys.Enter) {
+				//either enter was pressed and released or a mouse button was
+
+				EventManager.g_EM.QueueEvent(new ChangeScene(new SceneLevel()));
+			}
 		}
 	}
 }
