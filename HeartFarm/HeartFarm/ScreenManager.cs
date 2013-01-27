@@ -71,7 +71,7 @@ namespace HeartFarm
 			//get all the screens needing to be drawn in order
 			Stack<Screen> drawables = new Stack<Screen>();
 			foreach (Screen s in _screens) {
-				_screens.Push (s);
+				drawables.Push (s);
 				if(s.PreventDrawing)
 					break;
 			}
