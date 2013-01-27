@@ -15,6 +15,7 @@ namespace HeartFarm
 		{
 			
 			syringe = new TextureButton(CM, "ButtonIdle", Vector.Zero, "ButtonHover", "ButtonClick");
+			syringe.onPressed = Moo;
 		}
 		
 		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
@@ -24,7 +25,12 @@ namespace HeartFarm
 		
 		public void Update()
 		{
-			
+
+		}
+
+		public void Moo()
+		{
+			Console.WriteLine("Moo");
 		}
 	}
 }

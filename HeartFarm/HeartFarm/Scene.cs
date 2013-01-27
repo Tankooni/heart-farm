@@ -22,6 +22,8 @@ namespace HeartFarm
             //pushScreen(new IntroScreen(removeScreen, CM, gameOver, aspectRatio));
             //pushScreen(new Level(CM, removeScreen, gameOver, aspectRatio));
         }
+		public Scene (Game g)
+		{}
 
         public void pushScreen(Screen screen)
         {

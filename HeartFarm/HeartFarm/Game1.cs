@@ -110,9 +110,12 @@ namespace HeartFarm
 				EventManager.g_EM.AddListener(new ChangeScene(), this);
 
 				g_inputManager.clearActiveButtons();
-
+				//Type t = ;
 				//change to the given screen
-				currentScene = cs.scene;
+				currentScene = (Scene)(Activator.CreateInstance(cs.scene.GetType()));
+					//new cs.scene.GetType();
+
+				cs.isDoneProcessing = true;
 			}
 		}
 	}

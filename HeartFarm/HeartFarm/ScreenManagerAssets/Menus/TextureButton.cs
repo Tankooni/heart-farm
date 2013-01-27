@@ -97,13 +97,12 @@ namespace HeartFarm
 		{
 			if (e is MousePosition) {
 				MousePosition mp = (MousePosition)e;
-				Console.WriteLine(mp.pos);
 				if (hitbox.Contains(mp.pos.X, mp.pos.Y)) {
 					//mouse is hovering over the button, change the texture
 					if(state == State.Idle)
 						state = State.Hovered;
 
-					e.isDoneProcessing = true;
+					//e.isDoneProcessing = true;
 				}
 
 			} else if (e is MouseButtonPressed) {
@@ -111,7 +110,7 @@ namespace HeartFarm
 
 				if (state == State.Hovered) {
 					state = State.Clicked;
-					mbp.isDoneProcessing = true;
+					//mbp.isDoneProcessing = true;
 				}
 			} else if (e is MouseButtonReleased) {
 				//set the state back to idle

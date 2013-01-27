@@ -41,24 +41,26 @@ namespace HeartFarm
 			Events.Enqueue(e);
 		}
 
-		public void Update()
+		public void Update ()
 		{
-			//pop the next event in the queue
-			while(Events.Count > 0)
-			{
-				var e = Events.Peek();
-				Events.Dequeue();
+			try {
+				//pop the next event in the queue
+				while (Events.Count > 0) {
+					var e = Events.Peek ();
+					Events.Dequeue ();
 
-				if(!EventListeners.ContainsKey(e))
-					break;
-
-				//call each listener registered to this event type
-				foreach(Listener l in EventListeners[e])
-				{
-					l.OnEvent(e);
-					if(e.isDoneProcessing)
+					if (!EventListeners.ContainsKey (e))
 						break;
+
+					//call each listener registered to this event type
+					foreach (Listener l in EventListeners[e]) {
+						l.OnEvent (e);
+						if (e.isDoneProcessing)
+							break;
+					}
 				}
+			} catch {
+				Console.Write("Shit");
 			}
 		}
 	}
