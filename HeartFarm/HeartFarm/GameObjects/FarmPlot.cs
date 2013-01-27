@@ -14,6 +14,11 @@ namespace HeartFarm
 			set { beet = value;}
 		}
 
+		public Vector Position {
+			get{ return plotSprite.Position;}
+			set{ plotSprite.Position = value;}
+		}
+
 		public FarmPlot (Vector pos)
 		{
 			//init plot sprite

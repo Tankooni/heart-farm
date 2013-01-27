@@ -6,17 +6,27 @@ namespace HeartFarm
 	public class Level:Screen
 	{
 		FarmPlot[,] plots;
+		public static float BloodLevel = 0;
+		public float BloodTarget = 1000;
 
 		public Level ()
 		{
 			plots = new FarmPlot[5, 5];
+			bool beetPlanted = false;
+			for (int i = 0; i < 5; i++) {
+				for (int j = 0; j < 5; j++) {
+					plots [i, j] = new FarmPlot (new Vector (j * 64f + 250, i * 64f + 160));
+					if (Game1.rand.Next (100) < 3) {
+						beetPlanted = true;
+						plots [i, j].HeartBeet = new HeartBeet (plots [i, j].Position);
+					}
 
-			for (int i = 0; i < 5; i++)
-			{
-				for(int j = 0; j < 5; j++)
-				{
-					plots[i, j] = new FarmPlot(new Vector(j * 64f + 250, i * 64f + 160));
 				}
+			}
+			if (!beetPlanted) {
+				int i = Game1.rand.Next (5);
+				int j = Game1.rand.Next (5);
+				plots [i, j].HeartBeet = new HeartBeet (plots [i, j].Position);
 			}
 		}
 
