@@ -9,6 +9,15 @@ namespace HeartFarm
 		public static float BloodLevel = 0;
 		public float BloodTarget = 1000;
 
+		public enum Tools
+		{
+			Syringe,
+			Spade,
+			Scalpel
+		}
+
+		public Tools currentTool;
+
 		public Level ()
 		{
 			plots = new FarmPlot[5, 5];
