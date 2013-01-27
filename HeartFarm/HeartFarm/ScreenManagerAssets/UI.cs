@@ -20,7 +20,6 @@ namespace HeartFarm
 			cüdles.Position = new Vector(Game1.ScreenSize.X*0.5f, 0);
 
 			toodles = new ToolBar(Content);
-
 		}
 
 		public override Screen update()
