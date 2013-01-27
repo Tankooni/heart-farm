@@ -1,18 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="HeartFarm\InputManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HeartFarm\ScreenManagerAssets\UIAssets\ToolBar.cs">
     <Files>
-      <File FileName="HeartFarm\ScreenManagerAssets\UI.cs" Line="18" Column="4" />
-      <File FileName="HeartFarm\ScreenManagerAssets\UIAssets\ToolBar.cs" Line="27" Column="4" />
-      <File FileName="HeartFarm\ScreenManagerAssets\Menus\TextureButton.cs" Line="101" Column="1" />
-      <File FileName="HeartFarm\ScreenManagerAssets\UIAssets\Clock.cs" Line="53" Column="29" />
-      <File FileName="HeartFarm\ScreenManagerAssets\UIAssets\BloodGauge.cs" Line="47" Column="4" />
-      <File FileName="HeartFarm\Game1.cs" Line="20" Column="17" />
-      <File FileName="g:\Cronac\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Menus\MainMenu.cs" Line="11" Column="57" />
-      <File FileName="HeartFarm\BaseSprite.cs" Line="28" Column="18" />
-      <File FileName="g:\Cronac\HeartFarm\HeartFarm\HeartFarm\EventManager\EventManager.cs" Line="42" Column="24" />
-      <File FileName="HeartFarm\EventManager\Events\MousePosition.cs" Line="8" Column="13" />
-      <File FileName="HeartFarm\InputManager.cs" Line="59" Column="51" />
+      <File FileName="HeartFarm\ScreenManagerAssets\UI.cs" Line="26" Column="36" />
+      <File FileName="HeartFarm\ScreenManagerAssets\UIAssets\ToolBar.cs" Line="21" Column="42" />
+      <File FileName="HeartFarm\ScreenManagerAssets\Menus\TextureButton.cs" Line="31" Column="28" />
+      <File FileName="g:\Cronac\HeartFarm\HeartFarm\HeartFarm\EventManager\EventManager.cs" Line="64" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,9 +18,10 @@
             </Node>
             <Node name="ScreenManagerAssets" expanded="True">
               <Node name="Menus" expanded="True" />
-              <Node name="UIAssets" expanded="True" />
+              <Node name="UIAssets" expanded="True">
+                <Node name="ToolBar.cs" selected="True" />
+              </Node>
             </Node>
-            <Node name="InputManager.cs" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -35,10 +29,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="G:\Cronac\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Menus\TextureButton.cs" line="119" />
-      <Breakpoint file="G:\Cronac\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Menus\TextureButton.cs" line="113" />
-      <Breakpoint file="G:\Cronac\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Menus\TextureButton.cs" line="103" />
-      <Breakpoint file="G:\Cronac\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Menus\TextureButton.cs" line="101" />
+      <Breakpoint file="G:\Cronac\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Menus\TextureButton.cs" line="29" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

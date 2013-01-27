@@ -11,6 +11,8 @@ namespace HeartFarm
 		Texture2D hover;
 		Texture2D clicked;
 
+		BaseSprite tool;
+
 		BaseSprite sprote;
 
 		public Rectangle hitbox;
@@ -20,7 +22,15 @@ namespace HeartFarm
 		public delegate void OnPressed();
 		public OnPressed onPressed;
 
-		public Vector position;
+		public Vector position {
+			get{ return sprote.Position;}
+			set{ 
+				sprote.Position = value;
+				hitbox = new Rectangle((int)value.X, (int)value.Y, idle.Width, idle.Height);
+				if(tool != null)
+					tool.Position = value;
+			}
+		}
 		
 		public enum State
 		{
@@ -47,13 +57,19 @@ namespace HeartFarm
 			EventManager.g_EM.AddListener(new MouseButtonReleased(), this);
 		}
 
-		public TextureButton(ContentManager Content, String Idl, Vector position = null, String Hov = null, String Cli = null)
+		public TextureButton (ContentManager Content, String Idl, Vector position = null, String Hov = null, String Cli = null, String Objs = null)
 		{
-			idle = Content.Load<Texture2D>(Idl);
-			if(Hov != null)hover = Content.Load<Texture2D>(Hov);
-			if(Cli != null)clicked = Content.Load<Texture2D>(Cli);
+			idle = Content.Load<Texture2D> (Idl);
+			if(Hov != null) hover = Content.Load<Texture2D>(Hov);
+			if(Cli != null) clicked = Content.Load<Texture2D>(Cli);
 
 			sprote = new BaseSprite(idle);
+
+			if (Objs != null)
+			{
+				tool = new BaseSprite(Content.Load<Texture2D>(Objs));
+				tool.Position = sprote.Position;
+			}
 
 			if(position != null)
 				this.position = position;
@@ -90,6 +106,7 @@ namespace HeartFarm
 			}
 			sprote.Texture = tex;
 			sprote.Draw(gameTime, spriteBatch);
+			tool.Draw(gameTime, spriteBatch);
 			//spriteBatch.Draw(tex, hitbox, null, Color.White);
 		}
 
