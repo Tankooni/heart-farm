@@ -15,12 +15,12 @@ namespace HeartFarm
 	{
 		public static Vector ScreenSize;
 		public static ContentManager g_content;
-		public static GameTime g_time;
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
+		public static GameTime g_gameTime;
 		//Matrix SpriteScale = Matrix.Identity;
 		
-		ScreenManager screenManager;
+		Scene screenManager;
 		InputManager inputManager;
 
 		public Game1 ()
@@ -42,7 +42,7 @@ namespace HeartFarm
 
 			Drawer.Init(spriteBatch.GraphicsDevice);
 			Engine.SoundManager.Init(Content);
-			screenManager = new ScreenManager(Content, graphics.GraphicsDevice.DisplayMode.AspectRatio);
+			screenManager = new Scene(Content);
 			inputManager = new InputManager();
 
 			Level level1 = new Level();
@@ -69,14 +69,12 @@ namespace HeartFarm
 		bool isMusicLoaded = false;
 		protected override void Update (GameTime gameTime)
 		{
-			g_time = gameTime;
-
 			// For Mobile devices, this logic will close the Game when the Back button is pressed
 			if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 			{
 				Exit ();
 			}
-
+			Game1.g_gameTime = gameTime;
 			Engine.SoundManager.gameTime = gameTime;
 
 			if (!isMusicLoaded)
