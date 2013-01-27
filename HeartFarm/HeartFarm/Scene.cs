@@ -8,13 +8,13 @@ using Microsoft.Xna.Framework.Content;
 
 namespace HeartFarm
 {
-    class ScreenManager
+    class Scene
     {
         ContentManager _CM;
 
         Stack<Screen> _screens = new Stack<Screen>();
 
-        public ScreenManager(ContentManager CM, float aspectRatio)
+        public Scene(ContentManager CM)
         {
             _CM = CM;
 
