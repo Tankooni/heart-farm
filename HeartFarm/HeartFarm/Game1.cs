@@ -84,7 +84,8 @@ namespace HeartFarm
 			//updates...
 			inputManager.update();
 			EventManager.g_EM.Update();
-//			if (!screenManager.update(inputManager))
+			screenManager.update();
+//			if (!screenManager.update())
 //				Exit();
 					
 			base.Update (gameTime);
@@ -92,7 +93,7 @@ namespace HeartFarm
 
 		protected override void Draw (GameTime gameTime)
 		{
-			graphics.GraphicsDevice.Clear (Color.CornflowerBlue);
+			graphics.GraphicsDevice.Clear (Color.BlueViolet);
             
 			//spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, SpriteScale);
 			//spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, SpriteScale);

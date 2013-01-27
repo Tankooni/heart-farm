@@ -44,7 +44,7 @@ namespace HeartFarm
 
 		public override Screen update ()
 		{
-			throw new System.NotImplementedException ();
+			return null;
 		}
 	}
 }

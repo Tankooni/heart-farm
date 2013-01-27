@@ -116,7 +116,6 @@ namespace HeartFarm
         {
             return new Vector(v1._X / f, v1._Y / f, v1._Z / f);
         }
-        
 
         public override string ToString()
         {
