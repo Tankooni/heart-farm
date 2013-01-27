@@ -62,6 +62,7 @@
     <Compile Include="EventManager\Events\MousePosition.cs" />
     <Compile Include="GUISprite.cs" />
     <Compile Include="ScreenManagerAssets\UIAssets\BloodGauge.cs" />
+    <Compile Include="ScreenManagerAssets\UIAssets\ToolBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />

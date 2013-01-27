@@ -22,6 +22,8 @@ namespace HeartFarm
 			}
 		}
 
+		public int Width {get {return bloodVial.Width;}}
+		public int Height { get {return bloodVial.Height;}}
 
 
 		public BloodGauge(ContentManager CM)
