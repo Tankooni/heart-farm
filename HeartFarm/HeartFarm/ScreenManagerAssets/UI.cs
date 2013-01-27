@@ -15,7 +15,7 @@ namespace HeartFarm
 			boodles.Position = new Vector(Game1.ScreenSize.X*0.995f - boodles.Width , Game1.ScreenSize.Y*0.495f - boodles.Height/2);
 		}
 
-		public override Screen update(InputManager IM)
+		public override Screen update()
 		{
 			boodles.Update();
 			return null;

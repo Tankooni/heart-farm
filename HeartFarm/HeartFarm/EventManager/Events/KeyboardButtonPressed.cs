@@ -3,11 +3,11 @@ using Microsoft.Xna.Framework.Input;
 
 namespace HeartFarm
 {
-	public class ButtonPressed : Event
+	public class KeyboardButtonPressed : Event
 	{
 		public Keys keyPressed;
-		public ButtonPressed() {}
-		public ButtonPressed(Keys key) {
+		public KeyboardButtonPressed() {}
+		public KeyboardButtonPressed(Keys key) {
 			keyPressed = key;
 		}
 	}

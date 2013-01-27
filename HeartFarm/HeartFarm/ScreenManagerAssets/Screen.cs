@@ -22,7 +22,7 @@ namespace HeartFarm
         {
         }
 
-        abstract public Screen update(InputManager IM); //returns the next screen to 
+        abstract public Screen update(); //returns the next screen to 
         abstract public void draw(SpriteBatch spriteBatch, GameTime gametime);
     }
 }
