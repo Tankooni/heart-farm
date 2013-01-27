@@ -14,7 +14,9 @@ namespace HeartFarm
 		Level level;
 		
 		SpriteFont font;
+		SpriteFont bigFont;
 		string toolTip;
+		int timeToDisplayNextDayScreenThing = 0;
 		
 		public float ClockRotation {
 			get{return cüdles.Rotation;}
@@ -38,10 +40,11 @@ namespace HeartFarm
 			//add listeners
 			EventManager.g_EM.AddListener(new MousePosition(), this);
 			EventManager.g_EM.AddListener(new DrawToolTip(), this);
-			EventManager.g_EM.AddListener(new ToolChange(), this);
+			EventManager.g_EM.AddListener(new DayChanged(), this);
 
 			//init sprite font
 			font = Content.Load<SpriteFont>("defaultFont");
+			bigFont = Content.Load<SpriteFont>("MainMenuFont");
 		}
 
 		public override Screen update()
@@ -49,6 +52,10 @@ namespace HeartFarm
 			boodles.Update(Level.BloodLevel/level.BloodTarget);
 			cüdles.Update();
 			toodles.Update();
+
+			if(timeToDisplayNextDayScreenThing > 0)
+				timeToDisplayNextDayScreenThing--;
+
 			return null;
 		}
 		
@@ -59,11 +66,24 @@ namespace HeartFarm
 			toodles.Draw(spriteBatch, gameTime);
 			Cursor.Draw (gameTime, spriteBatch);
 
+			//draw number of vials on a rectangle
+			Drawer.drawRect(spriteBatch, new Vector(0,0,0), new Vector(160, 40, 0), new Color(0, 0, 0, 50));
+			spriteBatch.DrawString(font, "Vials: " + level.vials.ToString() +
+			                       "\nRequired Vials: " + level.requiredVials.ToString()
+			                       , new Vector2(0,0), Color.MediumVioletRed);
+
 			if (toolTip != null) {
-				//spriteBatch.GraphicsDevice.DrawPrimitives
-				spriteBatch.DrawString(font, toolTip, new Vector2(Cursor.Position.X, Cursor.Position.Y), Color.MediumVioletRed);
+				Drawer.drawRect(spriteBatch, Cursor.Position, new Vector(100, 40, 0), new Color(0, 0, 0, 50));
+				spriteBatch.DrawString(font, toolTip, new Vector2(Cursor.Position.X + 15, Cursor.Position.Y - 5), Color.MediumVioletRed);
 
 				toolTip = null;
+			}
+
+			//next day thing
+			if(timeToDisplayNextDayScreenThing > 0)
+			{
+				spriteBatch.DrawString(bigFont, "CONGRADULATIONS!\n    You made it to day\n                   " + level.day,
+				                       new Vector2(100, 200), Color.LightGoldenrodYellow);
 			}
 		}
 
@@ -78,22 +98,9 @@ namespace HeartFarm
 				DrawToolTip dtt = (DrawToolTip)e;
 
 				toolTip = dtt.s;
-			} else if (e is ToolChange)
-			{
-				ToolChange tc = (ToolChange)e;
-				switch (tc.tool) 
-				{
-				case (Level.Tools.Syringe):
-					Cursor.Texture = toodles.syringe.tool.Texture;
-					break;
-				case (Level.Tools.Spade):
-					Cursor.Texture = toodles.spade.tool.Texture;
-					break;
-				case (Level.Tools.Scalpel):
-					Cursor.Texture = toodles.scalpel.tool.Texture;
-					break;
-				}
-				level.currentTool = tc.tool;
+			} else if (e is DayChanged) {
+				//Display MAGIX!!
+				timeToDisplayNextDayScreenThing = 120;
 			}
 		}
 	}

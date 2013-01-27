@@ -132,7 +132,7 @@ namespace HeartFarm
 			}
 
 			_sprite.Scale.X = _sprite.Scale.Y = (float)_size/200.0f;
-			hitbox = new Rectangle((int)Position.X, (int)Position.Y, _sprite.Width, _sprite.Height);
+			hitbox = new Rectangle((int)Position.X - _sprite.Width/2, (int)Position.Y - _sprite.Height/2, _sprite.Width, _sprite.Height);
 			
 			//have it draw the tooltip if the mouse is hovering over it
 			if(state == State.Hovered || state == State.Clicked)

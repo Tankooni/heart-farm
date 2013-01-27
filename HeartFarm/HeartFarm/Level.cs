@@ -8,8 +8,10 @@ namespace HeartFarm
 		FarmPlot[,] plots;
 		public static float BloodLevel = 0;
 		public float BloodTarget = 1000;
+		public int vials = 0;
+		public int requiredVials = 1;
 
-		int day = 1;
+		public int day = 1;
 
 		public enum Tools
 		{
@@ -18,7 +20,7 @@ namespace HeartFarm
 			Scalpel
 		}
 
-		public Tools currentTool = Tools.Syringe;
+		public Tools currentTool;
 
 		public Level ()
 		{
@@ -58,7 +60,8 @@ namespace HeartFarm
 		public override Screen update ()
 		{
 			if (BloodLevel >= BloodTarget) {
-				//make it harder
+				BloodLevel -= BloodTarget;
+				vials++;
 			} 
 
 			foreach(FarmPlot p in plots)
@@ -72,10 +75,15 @@ namespace HeartFarm
 				day++;
 
 				//see if the player lost
-				if(BloodLevel < BloodTarget)
+				if(vials < requiredVials)
 				{
 					EventManager.g_EM.QueueEvent(new ChangeScene(new SceneGameOver()));
 				}
+				else
+				{
+					vials -= requiredVials;
+				}
+				requiredVials++;
 			}
 		}
 	}
