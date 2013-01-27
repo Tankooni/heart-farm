@@ -13,8 +13,9 @@ namespace HeartFarm
 		BaseSprite Cursor;
 		Level level;
 
-		SpriteFont font;
-		string toolTip;
+		public float ClockRotation {
+			get{return cüdles.Rotation;}
+		}
 
 		public UI(ContentManager Content, Level lo)
 		{
@@ -30,13 +31,7 @@ namespace HeartFarm
 
 			Cursor = new BaseSprite(Content, "Syringe");
 			Cursor.Origin.Y = Cursor.Height;
-
-			//add listeners
 			EventManager.g_EM.AddListener(new MousePosition(), this);
-			EventManager.g_EM.AddListener(new DrawToolTip(), this);
-
-			//init sprite font
-			font = Content.Load<SpriteFont>("defaultFont");
 		}
 
 		public override Screen update()
@@ -47,19 +42,12 @@ namespace HeartFarm
 			return null;
 		}
 		
-		public override void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gameTime)
+		public override void draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gameTime)
 		{
-			boodles.Draw (spriteBatch, gameTime);
-			cüdles.Draw (spriteBatch, gameTime);
+			boodles.Draw(spriteBatch, gameTime);
+			cüdles.Draw(spriteBatch, gameTime);
 			//toodles.Draw(spriteBatch, gameTime);
-			Cursor.Draw (gameTime, spriteBatch);
-
-			if (toolTip != null) {
-				//spriteBatch.GraphicsDevice.DrawPrimitives
-				spriteBatch.DrawString(font, toolTip, new Vector2(Cursor.Position.X, Cursor.Position.Y), Color.MediumVioletRed);
-
-				toolTip = null;
-			}
+			Cursor.Draw(gameTime, spriteBatch);
 		}
 
 		public void OnEvent (Event e)
@@ -69,10 +57,6 @@ namespace HeartFarm
 				Cursor.Position.X = mp.pos.X;
 				Cursor.Position.Y = mp.pos.Y;
 				e.isDoneProcessing = true;
-			} else if (e is DrawToolTip) {
-				DrawToolTip dtt = (DrawToolTip) e;
-
-				toolTip = dtt.s;
 			}
 		}
 	}

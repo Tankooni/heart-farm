@@ -11,7 +11,9 @@ namespace HeartFarm
 			this.pushScreen(new LevelBackground());
 			Level l = new Level();
 			this.pushScreen(l);
-			this.pushScreen(new UI(Game1.g_content, l));
+			UI ui = new UI(Game1.g_content, l);
+			this.pushScreen(new NightTint(ui));
+			this.pushScreen(ui);
 		}
 	}
 }
