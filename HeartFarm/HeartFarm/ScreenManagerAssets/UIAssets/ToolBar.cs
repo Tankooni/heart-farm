@@ -8,18 +8,16 @@ namespace HeartFarm
 	public class ToolBar
 	{
 		TextureButton syringe;
-		TextureButton shovel;
-		TextureButton scalpel;
 		
 		public ToolBar(ContentManager CM)
 		{
 			
-			syringe = new TextureButton(CM, "Syringe", new Vector(600,600));
+			//syringe = new TextureButton();
 		}
 		
 		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
 		{
-			syringe.Draw(gameTime, spriteBatch);
+			//syringe.Draw(gameTime, spriteBatch);
 		}
 		
 		public void Update()
