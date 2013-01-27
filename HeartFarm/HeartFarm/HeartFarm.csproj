@@ -39,112 +39,119 @@
     <Reference Include="MonoGame.Framework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Game1.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Program.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Properties\AssemblyInfo.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\BaseSprite.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Vector.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\SoundManager.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\InputManager.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\EventManager.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\Event.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\Listener.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\GameObjects\HeartBeet.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Menu.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Screen.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Menus\MenuOption.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\UI.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Drawer.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\Events\MousePosition.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\GUISprite.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\UIAssets\BloodGauge.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\UIAssets\ToolBar.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\Events\MouseButtonPressed.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\Events\MouseButtonReleased.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\Events\KeyboardButtonPressed.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\Events\KeyboardButtonReleased.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Menus\TextureButton.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\UIAssets\Clock.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Scene.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Menus\TitleScreen.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Scenes\SceneGameOver.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Scenes\SceneLevel.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Scenes\SceneTitle.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\Events\ChangeScene.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Level.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\LevelBackground.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\GameObjects\FarmPlot.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\UIAssets\Cursor.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\Events\ToolChange.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\NightTint.cs" />
-    <Compile Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\Events\DrawToolTip.cs" />
+    <Compile Include="Game1.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BaseSprite.cs" />
+    <Compile Include="Vector.cs" />
+    <Compile Include="SoundManager.cs" />
+    <Compile Include="InputManager.cs" />
+    <Compile Include="EventManager\EventManager.cs" />
+    <Compile Include="EventManager\Event.cs" />
+    <Compile Include="EventManager\Listener.cs" />
+    <Compile Include="GameObjects\HeartBeet.cs" />
+    <Compile Include="ScreenManagerAssets\Menu.cs" />
+    <Compile Include="ScreenManagerAssets\Screen.cs" />
+    <Compile Include="ScreenManagerAssets\Menus\MenuOption.cs" />
+    <Compile Include="ScreenManagerAssets\UI.cs" />
+    <Compile Include="Drawer.cs" />
+    <Compile Include="EventManager\Events\MousePosition.cs" />
+    <Compile Include="GUISprite.cs" />
+    <Compile Include="ScreenManagerAssets\UIAssets\BloodGauge.cs" />
+    <Compile Include="ScreenManagerAssets\UIAssets\ToolBar.cs" />
+    <Compile Include="EventManager\Events\MouseButtonPressed.cs" />
+    <Compile Include="EventManager\Events\MouseButtonReleased.cs" />
+    <Compile Include="EventManager\Events\KeyboardButtonPressed.cs" />
+    <Compile Include="EventManager\Events\KeyboardButtonReleased.cs" />
+    <Compile Include="ScreenManagerAssets\Menus\TextureButton.cs" />
+    <Compile Include="ScreenManagerAssets\UIAssets\Clock.cs" />
+    <Compile Include="Scene.cs" />
+    <Compile Include="Level.cs" />
+    <Compile Include="ScreenManagerAssets\Menus\TitleScreen.cs" />
+    <Compile Include="ScreenManagerAssets\UIAssets\Cursor.cs" />
+    <Compile Include="Scenes\SceneGameOver.cs" />
+    <Compile Include="Scenes\SceneLevel.cs" />
+    <Compile Include="Scenes\SceneTitle.cs" />
+    <Compile Include="EventManager\Events\ChangeScene.cs" />
+    <Compile Include="GameObjects\FarmPlot.cs" />
+    <Compile Include="LevelBackground.cs" />
+    <Compile Include="EventManager\Events\ToolChange.cs" />
+    <Compile Include="EventManager\Events\DrawToolTip.cs" />
+    <Compile Include="NightTint.cs" />
+    <Compile Include="ScreenManagerAssets\UIAssets\GameOverScreen.cs" />
+    <Compile Include="EventManager\Events\DayChanged.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Icon.png" />
-    <None Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\PlotTile2.png" />
-    <None Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\defaultFont.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <None Include="Icon.png" />
+    <None Include="Content\PlotTile2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\" />
-    <Folder Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\GameObjects\" />
-    <Folder Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\" />
-    <Folder Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\EventManager\Events\" />
-    <Folder Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\" />
+    <Folder Include="Content\" />
+    <Folder Include="GameObjects\" />
+    <Folder Include="EventManager\" />
+    <Folder Include="EventManager\Events\" />
+    <Folder Include="ScreenManagerAssets\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\white.png">
+    <Content Include="Content\white.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\BloodGaugeFill.Png">
+    <Content Include="Content\BloodGaugeFill.Png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\BloodGaugeOutLine.png">
+    <Content Include="Content\BloodGaugeOutLine.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\GrassTile.png">
+    <Content Include="Content\GrassTile.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\HeartBeet.png">
+    <Content Include="Content\HeartBeet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\DayNightFill.png">
+    <Content Include="Content\DayNightFill.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\DayNightOutline.png">
+    <Content Include="Content\DayNightOutline.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\TitleScreen.png">
+    <Content Include="Content\PlotTile.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\TitleScreenBackground.png">
+    <Content Include="Content\TitleScreen.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\Syringe.png">
+    <Content Include="Content\TitleScreenBackground.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\ButtonClick.png">
+    <Content Include="Content\Syringe.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\ButtonHover.png">
+    <Content Include="Content\ButtonClick.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\ButtonIdle.png">
+    <Content Include="Content\ButtonHover.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\Scalpel.png">
+    <Content Include="Content\ButtonIdle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\Spade.png">
+    <Content Include="Content\Scalpel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\PlotTile.png">
+    <Content Include="Content\Spade.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\..\Matte%27s\HeartFarm\HeartFarm\HeartFarm\Content\GoCartLoop.wav">
+    <Content Include="Content\GoCartLoop.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\GameOver.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\defaultFont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
