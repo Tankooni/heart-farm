@@ -3,41 +3,45 @@ using Microsoft.Xna.Framework.Content;
 
 namespace HeartFarm
 {
-	public class HeartBeet: Screen, Listener
+	public class HeartBeet : Listener
 	{
-		public int _size;
-		public int _bloodAmount;
+		public double _size;
+		public double _bloodAmount;
 		public double _rateOfGrowth;
 		public double _rateOfBlood;
 
-		public Vector _position;
-		public Vector _scale;
 		BaseSprite _sprite;
 
-		public HeartBeet(Vector sentPos, Vector sentScale)
+		public Vector Position {
+			get { return _sprite.Position; }
+			set {
+				if(_sprite != null)
+					_sprite.Position = value;
+			}
+		}
+
+		public HeartBeet(Vector pos)
 		{
 			_size = 10;
 			_bloodAmount = _size / 2;
 			_rateOfGrowth = 0.1;
 			_rateOfBlood = 1;
 
-			_position = sentPos;
-			_scale = sentScale;
+			Position = pos;
 
-			_sprite = new BaseSprite(Game1.g_content, "HeartBeet", _position, _scale);
+			_sprite = new BaseSprite(Game1.g_content, "HeartBeet");
 		}
 
-		public HeartBeet (int sentSize, int sentBlood, double sentGrowthRate, double sentBloodRate, Vector sentPos, Vector sentScale)
+		public HeartBeet (int sentSize, int sentBlood, double sentGrowthRate, double sentBloodRate, Vector pos)
 		{
 			_size = sentSize;
 			_bloodAmount = sentBlood;
 			_rateOfGrowth = sentGrowthRate;
 			_rateOfBlood = sentBloodRate;
+
+			Position = pos;
 			
-			_position = sentPos;
-			_scale = sentScale;
-			
-			_sprite = new BaseSprite(Game1.g_content, "HeartBeet", _position, _scale);
+			_sprite = new BaseSprite(Game1.g_content, "HeartBeet");
 
 		}
 
@@ -50,14 +54,22 @@ namespace HeartFarm
 			}
 		}
 
-		public override void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
+		public void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
 		{
 			_sprite.Draw(gametime, spriteBatch);
 		}
 		
-		public override Screen update ()
+		public void update ()
 		{
-			throw new System.NotImplementedException ();
+			//make it grow
+			_size += _rateOfGrowth;
+			if(_size > 200)
+				_size = 200;
+
+			//make it make blood
+			_bloodAmount += _rateOfBlood;
+			if(_bloodAmount > _size)
+				_bloodAmount = _size;
 		}
 	}
 }

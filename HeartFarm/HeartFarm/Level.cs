@@ -5,23 +5,23 @@ namespace HeartFarm
 {
 	public class Level:Screen
 	{
-		BaseSprite[,] tileArray;
+		BaseSprite[,] plots;
 		public List<HeartBeet> beetList = new List<HeartBeet>();
 
 		public Level ()
 		{
-			tileArray = new BaseSprite[5, 5];
+			plots = new BaseSprite[5, 5];
 
 			for (int i = 0; i < 5; i++)
 			{
 				for(int j = 0; j < 5; j++)
 				{
-					tileArray[i, j] = new BaseSprite(Game1.g_content, "DirtTile", new Vector(j * 64f, i * 64f), new Vector(1.0f, 1.0f, 1.0f));
+					plots[i, j] = new BaseSprite(Game1.g_content, "DirtTile", new Vector(j * 64f + 250, i * 64f + 160), new Vector(1.0f, 1.0f, 1.0f));
 				}
 
 			}
 			//Add one beet to the list for testing purposes.
-			beetList.Add(new HeartBeet(new Vector(30f, 30f), new Vector(0.7f, 0.7f, 0.7f)));
+			beetList.Add(new HeartBeet(new Vector(30f, 30f)));
 		}
 
 		public override void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
@@ -30,7 +30,7 @@ namespace HeartFarm
 
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 5; j++) {
-					tileArray [i, j].Draw (gametime, spriteBatch);
+					plots [i, j].Draw (gametime, spriteBatch);
 				}
 				
 			}
