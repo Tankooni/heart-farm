@@ -10,12 +10,43 @@ namespace HeartFarm
 		BaseSprite Fill;
 		BaseSprite Border;
 
+		public Vector Position {
+			get {
+				return Border.Position;
+			}
+			set {
+				Border.Position = value;
+				Fill.Position = value;
+			}
+		}
 
+		public float Rotation
+		{
+			get { return Fill.Rotation;}
+			set { Fill.Rotation = value;}
+		}
+		
+		public int Width {get {return Border.Width;}}
+		public int Height { get {return Border.Height;}}
 
 		public Clock (ContentManager CM)
 		{
 			Fill = new BaseSprite(CM, "DayNightFill");
 			Border = new BaseSprite(CM, "DayNightOutline");
+
+			Border.Origin = Fill.Origin = new Vector(Fill.Width/2, Fill.Width/2);
+			Border.Scale = Fill.Scale = new Vector(1.3f, 1.3f);
+		}
+
+		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
+		{
+			Fill.Draw(gameTime, spriteBatch);
+			Border.Draw(gameTime, spriteBatch);
+		}
+
+		public void Update()
+		{
+			Rotation += .5f;
 		}
 	}
 }
