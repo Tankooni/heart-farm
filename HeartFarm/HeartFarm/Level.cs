@@ -20,7 +20,7 @@ namespace HeartFarm
 			Scalpel
 		}
 
-		public Tools currentTool;
+		public Tools currentTool = Tools.Syringe;
 
 		public Level ()
 		{
@@ -84,6 +84,7 @@ namespace HeartFarm
 					vials -= requiredVials;
 				}
 				requiredVials++;
+
 			}
 		}
 	}
