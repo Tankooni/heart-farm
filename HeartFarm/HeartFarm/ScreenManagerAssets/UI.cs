@@ -38,6 +38,7 @@ namespace HeartFarm
 			//add listeners
 			EventManager.g_EM.AddListener(new MousePosition(), this);
 			EventManager.g_EM.AddListener(new DrawToolTip(), this);
+			EventManager.g_EM.AddListener(new ToolChange(), this);
 
 			//init sprite font
 			font = Content.Load<SpriteFont>("defaultFont");
@@ -74,9 +75,25 @@ namespace HeartFarm
 				Cursor.Position.Y = mp.pos.Y;
 				e.isDoneProcessing = true;
 			} else if (e is DrawToolTip) {
-				DrawToolTip dtt = (DrawToolTip) e;
+				DrawToolTip dtt = (DrawToolTip)e;
 
 				toolTip = dtt.s;
+			} else if (e is ToolChange)
+			{
+				ToolChange tc = (ToolChange)e;
+				switch (tc.tool) 
+				{
+				case (Level.Tools.Syringe):
+					Cursor.Texture = toodles.syringe.tool.Texture;
+					break;
+				case (Level.Tools.Spade):
+					Cursor.Texture = toodles.spade.tool.Texture;
+					break;
+				case (Level.Tools.Scalpel):
+					Cursor.Texture = toodles.scalpel.tool.Texture;
+					break;
+				}
+				level.currentTool = tc.tool;
 			}
 		}
 	}

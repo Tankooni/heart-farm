@@ -11,7 +11,7 @@ namespace HeartFarm
 		Texture2D hover;
 		Texture2D clicked;
 
-		BaseSprite tool;
+		public BaseSprite tool;
 
 		BaseSprite sprote;
 
