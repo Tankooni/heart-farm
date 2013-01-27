@@ -83,6 +83,14 @@ namespace HeartFarm
             init(texture);
         }
 
+		public BaseSprite (ContentManager CM, String assetName, Vector position, Vector scale)
+		{
+			init(CM.Load<Texture2D>(assetName));
+			_position = position;
+			_scale = scale;
+
+		}
+
         private void init(Texture2D texture)
         {
             _texture = texture;
