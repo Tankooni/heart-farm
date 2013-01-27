@@ -57,12 +57,17 @@
     <Compile Include="ScreenManagerAssets\Screen.cs" />
     <Compile Include="ScreenManagerAssets\Menus\MainMenu.cs" />
     <Compile Include="ScreenManagerAssets\Menus\MenuOption.cs" />
+    <Compile Include="ScreenManagerAssets\UI.cs" />
+    <Compile Include="Drawer.cs" />
     <Compile Include="EventManager\Events\MousePosition.cs" />
-    <Compile Include="EventManager\Events\MouseButtonPressed.cs" />
-    <Compile Include="EventManager\Events\MouseButtonReleased.cs" />
+    <Compile Include="GUISprite.cs" />
+    <Compile Include="ScreenManagerAssets\UIAssets\BloodGauge.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
+    <None Include="Content\PlotTile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
@@ -72,4 +77,21 @@
     <Folder Include="ScreenManagerAssets\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Content Include="Content\white.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\BloodGaugeFill.Png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\BloodGaugeOutLine.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\GrassTile.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\HeartBeet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

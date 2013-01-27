@@ -17,7 +17,6 @@ namespace HeartFarm
 	{
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
-
 		//Matrix SpriteScale = Matrix.Identity;
 		
 		ScreenManager screenManager;
@@ -49,6 +48,7 @@ namespace HeartFarm
 			graphics.PreferMultiSampling = false;
 			graphics.ApplyChanges();
 
+			Drawer.Init(spriteBatch.GraphicsDevice);
 			Engine.SoundManager.Init(Content);
 			screenManager = new ScreenManager(Content, graphics.GraphicsDevice.DisplayMode.AspectRatio);
 			inputManager = new InputManager();
@@ -96,7 +96,6 @@ namespace HeartFarm
 			//spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, SpriteScale);
 			spriteBatch.Begin(SpriteSortMode.FrontToBack, null);
 			screenManager.draw(spriteBatch, gameTime);
-			
 			spriteBatch.End();
 
 			base.Draw (gameTime);

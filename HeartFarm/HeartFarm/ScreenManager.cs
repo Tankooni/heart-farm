@@ -31,52 +31,34 @@ namespace HeartFarm
         {
             _screens.Push(screen);
         }
-		public void popScreen ()
-		{
-			_screens.Pop();
-		}
-		//removes the given screen if it exists
-        public void removeScreen (Screen screen)
-		{
-			//create a new stack to store the screens not being deleted
-			Stack<Screen> newScreens = new Stack<Screen>();
-			foreach (Screen s in _screens.Reverse()) {
-				if(s != screen)
-					newScreens.Push(s);
-			}
-            //clear the old stack and assign it the new one
-			_screens.Clear();
-			_screens = newScreens;
+        public void removeScreen(Screen screen)
+        {
+            _screens.Pop();
         }
-		//removes all screens in the stack
-		public void clearScreens ()
-		{
-			_screens.Clear();
-		}
 
         public bool update(InputManager IM)
         {
-			//update all screens that can be updated
-			foreach (Screen s in _screens) {
-				s.update(IM);
-				if(s.PreventUpdates)
-					break;
-			}
+            //check for higher teir key presses
+            
+            
+            //update current screen
+            Screen nextScreen = _screens.Peek().update(IM);
+            if (nextScreen != null)
+                _screens.Push(nextScreen);
 
-			return false;
+            if (_screens.Count == 0)
+            {
+                return false; //we're done here
+            }
+
+            return true;
         }
 
-        public void draw (SpriteBatch spritebatch, GameTime gametime)
-		{
-			//get all the screens needing to be drawn in order
-			Stack<Screen> drawables = new Stack<Screen>();
-			foreach (Screen s in _screens) {
-				_screens.Push (s);
-				if(s.PreventDrawing)
-					break;
-			}
-			//draw them all in order
-            foreach (Screen screen in drawables)
+        public void draw(SpriteBatch spritebatch, GameTime gametime)
+        {
+            //draw each screen
+            
+            foreach (Screen screen in _screens)
             {
                 screen.draw(spritebatch, gametime);
             }
