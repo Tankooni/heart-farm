@@ -16,7 +16,7 @@ namespace HeartFarm
 
 		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
 		{
-
+			syringe.Draw(gameTime, spriteBatch);
 		}
 
 		public void Update()
