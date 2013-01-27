@@ -32,7 +32,7 @@ namespace HeartFarm
 
 		public override Screen update()
 		{
-			boodles.Update();
+			boodles.Update(Level.BloodLevel/level.BloodTarget);
 			cüdles.Update();
 			toodles.Update();
 			return null;
@@ -42,7 +42,7 @@ namespace HeartFarm
 		{
 			boodles.Draw(spriteBatch, gameTime);
 			cüdles.Draw(spriteBatch, gameTime);
-			toodles.Draw(spriteBatch, gameTime);
+			//toodles.Draw(spriteBatch, gameTime);
 			Cursor.Draw(gameTime, spriteBatch);
 		}
 

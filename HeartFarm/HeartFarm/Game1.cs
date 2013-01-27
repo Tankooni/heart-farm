@@ -18,6 +18,7 @@ namespace HeartFarm
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		public static GameTime g_gameTime;
+		public static Random rand = new Random();
 		//Matrix SpriteScale = Matrix.Identity;
 		
 		Scene currentScene;

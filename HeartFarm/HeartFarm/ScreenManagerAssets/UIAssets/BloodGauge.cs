@@ -9,7 +9,19 @@ namespace HeartFarm
 	{
 		BaseSprite bloodVial;
 		BaseSprite bloodGauge;
-		public float percentToDraw = 0.9f;
+		float _percentToDraw;
+		public float PercentToDraw {
+			get { return _percentToDraw;}
+			set {
+				if(value <= 1)
+					_percentToDraw = value;
+				else if(value < 0)
+					_percentToDraw = 0;
+				else
+					_percentToDraw = 1;
+			}
+		}
+
 		Rectangle origSize;
 
 		public Vector Position {
@@ -18,7 +30,7 @@ namespace HeartFarm
 			}
 			set {
 				bloodVial.Position = value;
-				bloodGauge.Position = new Vector(value.X, value.Y + bloodVial.Height - origSize.Height * percentToDraw);
+				bloodGauge.Position = new Vector(value.X, value.Y + bloodVial.Height - origSize.Height * _percentToDraw);
 			}
 		}
 
@@ -36,17 +48,18 @@ namespace HeartFarm
 			origSize = bloodGauge.ViewBox;
 
 			this.Position = new Vector(100, 100);
-			bloodGauge.ViewBox = new Rectangle(origSize.X, (int)(origSize.Y + origSize.Height*(1-percentToDraw)), origSize.Width, (int)(origSize.Height*percentToDraw));
-			bloodGauge.Position = new Vector(Position.X, Position.Y + bloodVial.Height - origSize.Height*percentToDraw);
+			bloodGauge.ViewBox = new Rectangle(origSize.X, (int)(origSize.Y + origSize.Height*(1-_percentToDraw)), origSize.Width, (int)(origSize.Height*_percentToDraw));
+			bloodGauge.Position = new Vector(Position.X, Position.Y + bloodVial.Height - origSize.Height*_percentToDraw);
 			//bloodGauge.Origin = new Vector(bloodVial.Origin.X, bloodVial.Height);
 
 			//bloodGauge.Origin = new Vector(0, 10);
 		}
 
-		public void Update(/*GameTime gameTime*/)
+		public void Update(float percent)
 		{
-			bloodGauge.ViewBox = new Rectangle(origSize.X, (int)(origSize.Y + origSize.Height*(1-percentToDraw)), origSize.Width, (int)(origSize.Height*percentToDraw));
-			bloodGauge.Position = new Vector(Position.X, Position.Y + bloodVial.Height - origSize.Height*percentToDraw);
+			PercentToDraw = percent;
+			bloodGauge.ViewBox = new Rectangle(origSize.X, (int)(origSize.Y + origSize.Height*(1-_percentToDraw)), origSize.Width, (int)(origSize.Height*_percentToDraw));
+			bloodGauge.Position = new Vector(Position.X, Position.Y + bloodVial.Height - origSize.Height*_percentToDraw);
 			//Console.WriteLine(percentToDraw = (float)Math.Abs(Math.Sin(gameTime.TotalGameTime.Milliseconds)));
 		}
 
