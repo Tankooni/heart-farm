@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Content;
 
 #endregion
 
@@ -13,6 +14,7 @@ namespace HeartFarm
 	public class Game1 : Game
 	{
 		public static Vector ScreenSize;
+		public static ContentManager g_content;
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		//Matrix SpriteScale = Matrix.Identity;
@@ -24,6 +26,7 @@ namespace HeartFarm
 		{
 			graphics = new GraphicsDeviceManager (this);
 			Content.RootDirectory = "Content";
+			g_content = Content;
 			//graphics.IsFullScreen = true;
 		}
 		
@@ -41,7 +44,15 @@ namespace HeartFarm
 			screenManager = new ScreenManager(Content, graphics.GraphicsDevice.DisplayMode.AspectRatio);
 			inputManager = new InputManager();
 
+			Level level1 = new Level();
+
+			screenManager.pushScreen(level1);
+
+			//screenManager.pushScreen(level1.beetList);
+
 			screenManager.pushScreen(new UI(Content));
+
+
 		}
 
 		/// <summary>

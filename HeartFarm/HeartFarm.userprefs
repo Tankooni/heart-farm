@@ -1,16 +1,17 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="HeartFarm\Level.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="g:\Matte's\HEARTFAMR2\HeartFarm\HeartFarm\EventManager\Events\MousePosition.cs">
     <Files>
       <File FileName="HeartFarm\ScreenManagerAssets\UI.cs" Line="7" Column="2" />
       <File FileName="HeartFarm\ScreenManagerAssets\UIAssets\BloodGauge.cs" Line="25" Column="50" />
-      <File FileName="HeartFarm\Game1.cs" Line="66" Column="1" />
+      <File FileName="HeartFarm\Game1.cs" Line="29" Column="24" />
       <File FileName="HeartFarm\ScreenManager.cs" Line="51" Column="37" />
       <File FileName="HeartFarm\ScreenManagerAssets\UIAssets\ToolBar.cs" Line="1" Column="1" />
       <File FileName="HeartFarm\ScreenManagerAssets\Screen.cs" Line="25" Column="39" />
       <File FileName="HeartFarm\BaseSprite.cs" Line="90" Column="19" />
       <File FileName="HeartFarm\Drawer.cs" Line="15" Column="41" />
-      <File FileName="HeartFarm\Level.cs" Line="17" Column="8" />
+      <File FileName="HeartFarm\Level.cs" Line="18" Column="1" />
+      <File FileName="g:\Matte's\HEARTFAMR2\HeartFarm\HeartFarm\EventManager\Events\MousePosition.cs" Line="8" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
