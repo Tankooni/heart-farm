@@ -19,6 +19,16 @@ namespace HeartFarm
 
 			}
 		}
+
+		public override void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
+		{
+			throw new System.NotImplementedException ();
+		}
+
+		public override Screen update ()
+		{
+			throw new System.NotImplementedException ();
+		}
 	}
 }
 
