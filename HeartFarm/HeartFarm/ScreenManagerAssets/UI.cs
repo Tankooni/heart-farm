@@ -11,9 +11,12 @@ namespace HeartFarm
 		Clock cüdles;
 		ToolBar toodles;
 		BaseSprite Cursor;
-		
-		public UI(ContentManager Content)
+		Level level;
+
+		public UI(ContentManager Content, Level lo)
 		{
+			level = lo;
+
 			boodles = new BloodGauge(Content);
 			boodles.Position = new Vector(Game1.ScreenSize.X*0.995f - boodles.Width , Game1.ScreenSize.Y*0.495f - boodles.Height/2);
 

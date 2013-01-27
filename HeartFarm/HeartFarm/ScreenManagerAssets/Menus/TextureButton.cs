@@ -48,7 +48,6 @@ namespace HeartFarm
 				this.position = position;
 			else
 				this.position = Vector.Zero;
-
 			//hitbox is the same size as the texture for now
 			//hitbox = new Rectangle(position.X, position.Y, idle.;
 
@@ -57,7 +56,7 @@ namespace HeartFarm
 			EventManager.g_EM.AddListener(new MouseButtonReleased(), this);
 		}
 
-		public TextureButton (ContentManager Content, String Idl, Vector position = null, String Hov = null, String Cli = null, String Objs = null)
+		public TextureButton (ContentManager Content, String Idl, Vector position = null, String Hov = null, String Cli = null, String Tool = null)
 		{
 			idle = Content.Load<Texture2D> (Idl);
 			if(Hov != null) hover = Content.Load<Texture2D>(Hov);
@@ -65,12 +64,11 @@ namespace HeartFarm
 
 			sprote = new BaseSprite(idle);
 
-			if (Objs != null)
+			if (Tool != null)
 			{
-				tool = new BaseSprite(Content.Load<Texture2D>(Objs));
+				tool = new BaseSprite(Content.Load<Texture2D>(Tool));
 				tool.Position = sprote.Position;
 			}
-
 			if(position != null)
 				this.position = position;
 			else
@@ -106,7 +104,8 @@ namespace HeartFarm
 			}
 			sprote.Texture = tex;
 			sprote.Draw(gameTime, spriteBatch);
-			tool.Draw(gameTime, spriteBatch);
+			if(tool != null)
+				tool.Draw(gameTime, spriteBatch);
 			//spriteBatch.Draw(tex, hitbox, null, Color.White);
 		}
 
@@ -132,10 +131,13 @@ namespace HeartFarm
 			} else if (e is MouseButtonReleased) {
 				//set the state back to idle
 				if(state == State.Clicked)
+				{
 					state = State.Idle;
+					if(onPressed != null)
+						onPressed();
+				}
 
-				if(onPressed != null)
-					onPressed();
+
 			}
 		}
 	}

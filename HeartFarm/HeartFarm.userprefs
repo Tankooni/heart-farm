@@ -3,8 +3,8 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="HeartFarm\ScreenManagerAssets\UIAssets\ToolBar.cs">
     <Files>
       <File FileName="HeartFarm\ScreenManagerAssets\UI.cs" Line="26" Column="36" />
-      <File FileName="HeartFarm\ScreenManagerAssets\UIAssets\ToolBar.cs" Line="21" Column="42" />
-      <File FileName="HeartFarm\ScreenManagerAssets\Menus\TextureButton.cs" Line="31" Column="28" />
+      <File FileName="HeartFarm\ScreenManagerAssets\UIAssets\ToolBar.cs" Line="20" Column="6" />
+      <File FileName="HeartFarm\ScreenManagerAssets\Menus\TextureButton.cs" Line="29" Column="1" />
       <File FileName="g:\Cronac\HeartFarm\HeartFarm\HeartFarm\EventManager\EventManager.cs" Line="64" Column="25" />
     </Files>
     <Pads>
@@ -28,9 +28,7 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="G:\Cronac\HeartFarm\HeartFarm\HeartFarm\ScreenManagerAssets\Menus\TextureButton.cs" line="29" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

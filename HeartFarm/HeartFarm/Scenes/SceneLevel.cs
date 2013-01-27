@@ -9,8 +9,9 @@ namespace HeartFarm
 		{
 			//this should have a background, level and hud
 			this.pushScreen(new LevelBackground());
-			this.pushScreen(new Level());
-			this.pushScreen(new UI(Game1.g_content));
+			Level l = new Level();
+			this.pushScreen(l);
+			this.pushScreen(new UI(Game1.g_content, l));
 		}
 	}
 }
