@@ -10,11 +10,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace HeartFarm
 {
-	/// <summary>
-	/// This is the main type for your game
-	/// </summary>
 	public class Game1 : Game
 	{
+		public static Vector ScreenSize;
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		//Matrix SpriteScale = Matrix.Identity;
@@ -28,25 +26,15 @@ namespace HeartFarm
 			Content.RootDirectory = "Content";
 			//graphics.IsFullScreen = true;
 		}
-
-		/// <summary>
-		/// Allows the game to perform any initialization it needs to before starting to run.
-		/// This is where it can query for any required services and load any non-graphic
-		/// related content.  Calling base.Initialize will enumerate through any components
-		/// and initialize them as well.
-		/// </summary>
+		
 		protected override void Initialize ()
 		{
 			// TODO: Add your initialization logic here
 			base.Initialize ();
 
-//			graphics.IsFullScreen = true; //make it full screen!!
-//			
-//			graphics.PreferredBackBufferWidth = graphics.GraphicsDevice.DisplayMode.Width;
-//			graphics.PreferredBackBufferHeight = graphics.GraphicsDevice.DisplayMode.Height;
-
 			graphics.PreferMultiSampling = false;
 			graphics.ApplyChanges();
+			Game1.ScreenSize = new Vector(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
 
 			Drawer.Init(spriteBatch.GraphicsDevice);
 			Engine.SoundManager.Init(Content);
