@@ -21,7 +21,7 @@ namespace HeartFarm
 
 			}
 			//Add one beet to the list for testing purposes.
-			beetList.Add(new HeartBeet(new Vector(30f, 30f), new Vector(1f, 1f, 1f)));
+			beetList.Add(new HeartBeet(new Vector(30f, 30f), new Vector(0.7f, 0.7f, 0.7f)));
 		}
 
 		public override void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
