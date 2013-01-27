@@ -51,7 +51,7 @@ namespace HeartFarm
 
 			Engine.SoundManager.Init(Content);
 			screenManager = new ScreenManager(Content, graphics.GraphicsDevice.DisplayMode.AspectRatio);
-			inputManager = new InputManager(1);
+			inputManager = new InputManager();
 		}
 
 		/// <summary>

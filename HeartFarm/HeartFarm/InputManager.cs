@@ -9,39 +9,80 @@ namespace HeartFarm
 {
     class InputManager
     {
-        PlayerIndex playerIndex = PlayerIndex.One;
+		//stuff
+		List<Keys> activeButtons = new List<Keys>();
 
-        GamePadState _currentGamePadState = GamePad.GetState(PlayerIndex.One);
-        GamePadState _previousGamePadState = GamePad.GetState(PlayerIndex.One);
+		KeyboardState currentKeyState = Keyboard.GetState();
+		KeyboardState prevKeyState = Keyboard.GetState();
 
-        public GamePadState CurrentGamePadState
-        {
-            get { return _currentGamePadState; }
-            set { _currentGamePadState = value; }
-        }
-        public GamePadState PreviousGamePadState
-        {
-            get { return _previousGamePadState; }
-            set { _previousGamePadState = value; }
-        }
+		MouseState currentMouseState = Mouse.GetState();
+		MouseState prevMouseState = Mouse.GetState();
 
-        public InputManager()
-        {
-            playerIndex = PlayerIndex.One;
-        }
 
-        public InputManager(int player)
-        {
-            if (player > 0 && player <= 4)
-                playerIndex = (PlayerIndex)(player - 1);
-            else
-                throw new Exception("Player " + (player - 1) + "throws rocks at you.");
-        }
+		//functions
+		public void addActiveButton (Keys btn)
+		{
+			activeButtons.Add(btn);
+		}
+		public void clearActiveButtons ()
+		{
+			activeButtons.Clear();
+		}
+		public void removeActiveButton (Keys btn)
+		{
+			activeButtons.Remove(btn);
+		}
 
-        public void update()
-        {
-            _previousGamePadState = _currentGamePadState;
-            _currentGamePadState = GamePad.GetState(playerIndex);
+        public void update ()
+		{
+			//update pressed keys and mouse state
+			prevKeyState = currentKeyState;
+			currentKeyState = Keyboard.GetState ();
+
+			prevMouseState = currentMouseState;
+			currentMouseState = Mouse.GetState ();
+
+			//queue events based on new button presses and releases
+			foreach (Keys b in activeButtons) {
+				if (currentKeyState.IsKeyDown (b) != prevKeyState.IsKeyDown (b)) {
+					if (currentKeyState.IsKeyDown (b))
+						EventManager.g_EM.QueueEvent (new ButtonPressed (b));
+					else
+						EventManager.g_EM.QueueEvent (new ButtonReleased (b));
+				}
+			}
+			//queue mouse state events
+			if (currentMouseState != prevMouseState) {
+				//check left mouse button
+				if(currentMouseState.LeftButton != prevMouseState.LeftButton)
+				{
+					if(currentMouseState.LeftButton == ButtonState.Pressed)
+						EventManager.g_EM.QueueEvent(new MouseButtonPressed(MouseButtons.Left));
+					else
+						EventManager.g_EM.QueueEvent(new MouseButtonReleased(MouseButtons.Left));
+				}
+				//check right mouse button
+				if(currentMouseState.MiddleButton != prevMouseState.MiddleButton)
+				{
+					if(currentMouseState.MiddleButton == ButtonState.Pressed)
+						EventManager.g_EM.QueueEvent(new MouseButtonPressed(MouseButtons.Middle));
+					else
+						EventManager.g_EM.QueueEvent(new MouseButtonReleased(MouseButtons.Middle));
+				}
+				//check middle mouse button
+				if(currentMouseState.RightButton != prevMouseState.RightButton)
+				{
+					if(currentMouseState.RightButton == ButtonState.Pressed)
+						EventManager.g_EM.QueueEvent(new MouseButtonPressed(MouseButtons.Right));
+					else
+						EventManager.g_EM.QueueEvent(new MouseButtonReleased(MouseButtons.Right));
+				}
+			}
+
+			//queue a mouse position event
+			Mouse.POINT mousePos;
+			Mouse.GetCursorPos(out mousePos);
+			EventManager.g_EM.QueueEvent(new MousePosition(mousePos));
         }
     }
 }
