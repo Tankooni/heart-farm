@@ -72,6 +72,7 @@ namespace HeartFarm
 			}
 			//updates...
 			inputManager.update();
+			EventManager.g_EM.Update();
 //			if (!screenManager.update(inputManager))
 //				Exit();
 					
