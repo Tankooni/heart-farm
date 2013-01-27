@@ -60,6 +60,8 @@ namespace HeartFarm
 			else
 				this.position = Vector.Zero;
 
+			hitbox = new Rectangle((int)position.X, (int)position.Y, idle.Width, idle.Height);
+
 			EventManager.g_EM.AddListener(new MousePosition(), this);
 			EventManager.g_EM.AddListener(new MouseButtonPressed(), this);
 			EventManager.g_EM.AddListener(new MouseButtonReleased(), this);
@@ -95,7 +97,7 @@ namespace HeartFarm
 		{
 			if (e is MousePosition) {
 				MousePosition mp = (MousePosition)e;
-
+				Console.WriteLine(mp.pos);
 				if (hitbox.Contains(mp.pos.X, mp.pos.Y)) {
 					//mouse is hovering over the button, change the texture
 					if(state == State.Idle)
