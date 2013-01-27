@@ -42,13 +42,14 @@ namespace HeartFarm
 			Game1.ScreenSize = new Vector(graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
 
 			Drawer.Init(spriteBatch.GraphicsDevice);
-			Engine.SoundManager.Init(Content);
+			SoundManager.Init(Content);
 			g_inputManager = new InputManager();
 
 			EventManager.g_EM.AddListener(new ChangeScene(), this);
 
 			//start our game on the title scene
 			currentScene = new SceneTitle();
+			SoundManager.PlayLoop(Musics.One);
 		}
 
 		/// <summary>
@@ -70,7 +71,7 @@ namespace HeartFarm
 				Exit ();
 			}
 			Game1.g_gameTime = gameTime;
-			Engine.SoundManager.gameTime = gameTime;
+			//Engine.SoundManager.gameTime = gameTime;
 
 			if (!isMusicLoaded)
 			{

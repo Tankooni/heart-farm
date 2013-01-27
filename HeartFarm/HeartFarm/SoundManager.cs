@@ -7,14 +7,11 @@ using Microsoft.Xna.Framework.Content;
 using System.Threading;
 using Microsoft.Xna.Framework;
 
-namespace Engine
+namespace HeartFarm
 {
     public enum Musics
     {
-        One,
-        Two,
-        Three,
-        Four
+        One
     }
 
     public enum SFX
@@ -39,7 +36,7 @@ namespace Engine
         public static void Init(ContentManager CM)
         {
             music.Clear();
-            //music.Add(CM.Load<SoundEffect>(@"Music\CATGROOVE"));
+            music.Add(CM.Load<SoundEffect>("GoCartLoop"));
            	
             
             
@@ -68,7 +65,7 @@ namespace Engine
             uint currentTrack = 0;
             while(true)
             {
-                if ((gameTime.TotalGameTime.TotalMilliseconds - startTime) > (currentSongDuration - 2000))
+                if ((Game1.g_gameTime.TotalGameTime.TotalMilliseconds - startTime) > (currentSongDuration - 2000))
                 {
                     //Console.WriteLine("Triggered");
                     if (currentTrack < setList.Length-1)
@@ -100,7 +97,7 @@ namespace Engine
                 currentSongDuration = music[(int)m].Duration.TotalMilliseconds;
                 try
                 {
-                    startTime = gameTime.TotalGameTime.TotalMilliseconds;
+                    startTime = Game1.g_gameTime.TotalGameTime.TotalMilliseconds;
                 }
                 catch { }
                 currentMusic.IsLooped = loopd;
