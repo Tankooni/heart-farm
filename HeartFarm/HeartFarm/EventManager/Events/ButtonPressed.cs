@@ -7,6 +7,9 @@ namespace HeartFarm
 	{
 		public Keys keyPressed;
 		public ButtonPressed() {}
+		public ButtonPressed(Keys key) {
+			keyPressed = key;
+		}
 	}
 }
 

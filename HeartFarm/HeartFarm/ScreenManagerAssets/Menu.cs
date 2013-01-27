@@ -34,6 +34,9 @@ namespace HeartFarm
 
         public override Screen update(InputManager IM)
         {
+
+
+			/*
             if (IM.CurrentGamePadState.Buttons.A == Microsoft.Xna.Framework.Input.ButtonState.Pressed &&
                 IM.PreviousGamePadState.Buttons.A == Microsoft.Xna.Framework.Input.ButtonState.Released)
             {
@@ -65,6 +68,7 @@ namespace HeartFarm
                     menuOptions[_currentSelection].IsSelected = true; //the next one is
                 }
             }
+            */
 
             return null;
         }
