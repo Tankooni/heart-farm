@@ -52,7 +52,6 @@
     <Compile Include="GameObjects\HeartBeet.cs" />
     <Compile Include="ScreenManagerAssets\Menu.cs" />
     <Compile Include="ScreenManagerAssets\Screen.cs" />
-    <Compile Include="ScreenManagerAssets\Menus\MainMenu.cs" />
     <Compile Include="ScreenManagerAssets\Menus\MenuOption.cs" />
     <Compile Include="ScreenManagerAssets\UI.cs" />
     <Compile Include="Drawer.cs" />
@@ -66,8 +65,13 @@
     <Compile Include="EventManager\Events\KeyboardButtonReleased.cs" />
     <Compile Include="ScreenManagerAssets\Menus\TextureButton.cs" />
     <Compile Include="ScreenManagerAssets\UIAssets\Clock.cs" />
-    <Compile Include="Level.cs" />
     <Compile Include="Scene.cs" />
+    <Compile Include="EventManager\Events\ChangeScene.cs" />
+    <Compile Include="Scenes\SceneLevel.cs" />
+    <Compile Include="Level.cs" />
+    <Compile Include="Scenes\SceneTitle.cs" />
+    <Compile Include="Scenes\SceneGameOver.cs" />
+    <Compile Include="ScreenManagerAssets\Menus\TitleScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -78,6 +82,7 @@
     <Folder Include="EventManager\" />
     <Folder Include="EventManager\Events\" />
     <Folder Include="ScreenManagerAssets\" />
+    <Folder Include="Scenes\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

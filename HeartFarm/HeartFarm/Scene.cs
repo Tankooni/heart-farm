@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace HeartFarm
 {
-    class Scene
+    public class Scene
     {
         ContentManager _CM;
 
@@ -23,10 +23,6 @@ namespace HeartFarm
             //pushScreen(new Level(CM, removeScreen, gameOver, aspectRatio));
         }
 
-        public void gameOver()
-        {
-
-        }
         public void pushScreen(Screen screen)
         {
             _screens.Push(screen);

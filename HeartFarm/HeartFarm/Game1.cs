@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace HeartFarm
 {
-	public class Game1 : Game
+	public class Game1 : Game, Listener
 	{
 		public static Vector ScreenSize;
 		public static ContentManager g_content;
@@ -20,8 +20,8 @@ namespace HeartFarm
 		public static GameTime g_gameTime;
 		//Matrix SpriteScale = Matrix.Identity;
 		
-		Scene screenManager;
-		InputManager inputManager;
+		Scene currentScene;
+		public static InputManager g_inputManager;
 
 		public Game1 ()
 		{
@@ -29,6 +29,7 @@ namespace HeartFarm
 			Content.RootDirectory = "Content";
 			g_content = Content;
 			//graphics.IsFullScreen = true;
+			graphics.PreferredBackBufferHeight = 600;
 		}
 		
 		protected override void Initialize ()
@@ -42,18 +43,12 @@ namespace HeartFarm
 
 			Drawer.Init(spriteBatch.GraphicsDevice);
 			Engine.SoundManager.Init(Content);
-			screenManager = new Scene(Content);
-			inputManager = new InputManager();
+			g_inputManager = new InputManager();
 
-			Level level1 = new Level();
+			EventManager.g_EM.AddListener(new ChangeScene(), this);
 
-			screenManager.pushScreen(level1);
-
-			//screenManager.pushScreen(level1.beetList);
-
-			screenManager.pushScreen(new UI(Content));
-
-
+			//start our game on the title scene
+			currentScene = new SceneTitle();
 		}
 
 		/// <summary>
@@ -83,9 +78,9 @@ namespace HeartFarm
 				isMusicLoaded = true;
 			}
 			//updates...
-			inputManager.update();
+			g_inputManager.update();
 			EventManager.g_EM.Update();
-			screenManager.update();
+			currentScene.update();
 //			if (!screenManager.update(inputManager))
 //				Exit();
 					
@@ -99,10 +94,26 @@ namespace HeartFarm
 			//spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, SpriteScale);
 			//spriteBatch.Begin(SpriteSortMode.FrontToBack, null, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, SpriteScale);
 			spriteBatch.Begin(SpriteSortMode.Immediate, null);
-			screenManager.draw(spriteBatch, gameTime);
+			currentScene.draw(spriteBatch, gameTime);
 			spriteBatch.End();
 
 			base.Draw (gameTime);
+		}
+
+		public void OnEvent (Event e)
+		{
+			if (e is ChangeScene) {
+				ChangeScene cs = (ChangeScene) e;
+
+				//clean up a bit...(this should be done better but oh well
+				EventManager.g_EM.ClearListeners();
+				EventManager.g_EM.AddListener(new ChangeScene(), this);
+
+				g_inputManager.clearActiveButtons();
+
+				//change to the given screen
+				currentScene = cs.scene;
+			}
 		}
 	}
 }
