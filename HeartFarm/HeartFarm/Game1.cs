@@ -15,6 +15,7 @@ namespace HeartFarm
 	{
 		public static Vector ScreenSize;
 		public static ContentManager g_content;
+		public static GameTime g_time;
 		GraphicsDeviceManager graphics;
 		SpriteBatch spriteBatch;
 		//Matrix SpriteScale = Matrix.Identity;
@@ -68,6 +69,8 @@ namespace HeartFarm
 		bool isMusicLoaded = false;
 		protected override void Update (GameTime gameTime)
 		{
+			g_time = gameTime;
+
 			// For Mobile devices, this logic will close the Game when the Back button is pressed
 			if (GamePad.GetState (PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 			{

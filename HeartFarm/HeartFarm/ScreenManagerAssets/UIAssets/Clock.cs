@@ -9,6 +9,7 @@ namespace HeartFarm
 	{
 		BaseSprite Fill;
 		BaseSprite Border;
+		GameTime initialTime;
 
 		public Vector Position {
 			get {
@@ -36,6 +37,8 @@ namespace HeartFarm
 
 			Border.Origin = Fill.Origin = new Vector(Fill.Width/2, Fill.Width/2);
 			Border.Scale = Fill.Scale = new Vector(1.3f, 1.3f);
+
+			initialTime = Game1.g_time;
 		}
 
 		public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
@@ -46,7 +49,8 @@ namespace HeartFarm
 
 		public void Update()
 		{
-			Rotation += .5f;
+			//Make 70 seconds days
+			Rotation += Game1.g_time.ElapsedGameTime.Milliseconds / 20000f;
 		}
 	}
 }
