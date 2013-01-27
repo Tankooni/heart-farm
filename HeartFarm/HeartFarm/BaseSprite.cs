@@ -22,6 +22,12 @@ namespace HeartFarm
         protected float _layerDepth;
         protected Rectangle _viewBox;
 
+		public Texture2D Texture
+		{
+			get { return _texture; }
+			set { _texture = value; }
+		}
+
         public Color Tint
         {
             get { return _tint; }

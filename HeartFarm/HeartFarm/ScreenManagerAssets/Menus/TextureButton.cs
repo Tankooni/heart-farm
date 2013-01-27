@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace HeartFarm
@@ -10,7 +11,9 @@ namespace HeartFarm
 		Texture2D hover;
 		Texture2D clicked;
 
-		Rectangle hitbox;
+		BaseSprite sprote;
+
+		public Rectangle hitbox;
 
 		State state;
 
@@ -18,7 +21,7 @@ namespace HeartFarm
 		public OnPressed onPressed;
 
 		public Vector position;
-
+		
 		public enum State
 		{
 			Idle,
@@ -31,13 +34,31 @@ namespace HeartFarm
 			this.idle = idle;
 			this.hover = hover;
 			this.clicked = clicked;
-			if(position == null)
+			if(position != null)
 				this.position = position;
 			else
-				this.position = new Vector(0,0,0);
+				this.position = Vector.Zero;
 
 			//hitbox is the same size as the texture for now
-			hitbox = idle.Bounds;
+			//hitbox = new Rectangle(position.X, position.Y, idle.;
+
+			EventManager.g_EM.AddListener(new MousePosition(), this);
+			EventManager.g_EM.AddListener(new MouseButtonPressed(), this);
+			EventManager.g_EM.AddListener(new MouseButtonReleased(), this);
+		}
+
+		public TextureButton(ContentManager Content, String Idl, Vector position = null, String Hov = null, String Cli = null)
+		{
+			idle = Content.Load<Texture2D>(Idl);
+			if(Hov != null)hover = Content.Load<Texture2D>(Hov);
+			if(Cli != null)clicked = Content.Load<Texture2D>(Cli);
+
+			sprote = new BaseSprite(idle);
+
+			if(position != null)
+				this.position = position;
+			else
+				this.position = Vector.Zero;
 
 			EventManager.g_EM.AddListener(new MousePosition(), this);
 			EventManager.g_EM.AddListener(new MouseButtonPressed(), this);
@@ -65,8 +86,9 @@ namespace HeartFarm
 			default:
 				throw new Exception("Invilad state set to button");
 			}
-
-			spriteBatch.Draw(tex, position.toVector2(), Color.White);
+			sprote.Texture = tex;
+			sprote.Draw(gameTime, spriteBatch);
+			//spriteBatch.Draw(tex, hitbox, null, Color.White);
 		}
 
 		public void OnEvent (Event e)
