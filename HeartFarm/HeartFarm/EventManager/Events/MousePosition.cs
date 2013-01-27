@@ -1,13 +1,14 @@
 using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace HeartFarm
 {
 	public class MousePosition : Event
 	{
-		public Mouse.POINT pos;
+		public Point pos;
 		public MousePosition (){}
-		public MousePosition (Mouse.POINT p)
+		public MousePosition(Point p)
 		{
 			pos = p;
 		}

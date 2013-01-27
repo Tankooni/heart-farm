@@ -53,9 +53,10 @@ namespace HeartFarm
 			}
 
 			//queue a mouse position event
-			Mouse.POINT mousePos;
-			Mouse.GetCursorPos(out mousePos);
-			EventManager.g_EM.QueueEvent(new MousePosition(mousePos));
+//			Mouse.POINT mousePos;
+//			Mouse.GetCursorPos(out mousePos)
+			MouseState mouseState = Mouse.GetState();
+			EventManager.g_EM.QueueEvent(new MousePosition(new Point(mouseState.X, mouseState.Y)));
 
 			//queue mouse state events
 			if (!currentMouseState.Equals(prevMouseState)) {
