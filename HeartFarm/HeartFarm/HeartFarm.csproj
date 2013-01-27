@@ -76,6 +76,7 @@
     <Compile Include="GameObjects\FarmPlot.cs" />
     <Compile Include="ScreenManagerAssets\UIAssets\Cursor.cs" />
     <Compile Include="EventManager\Events\ToolChange.cs" />
+    <Compile Include="EventManager\Events\DrawToolTip.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
@@ -141,5 +142,10 @@
     <Content Include="Content\GoCartLoop.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Content\defaultFont.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

@@ -60,7 +60,8 @@ namespace HeartFarm
 					if (state == State.Idle)
 						state = State.Hovered;
 					//e.isDoneProcessing = true;
-				}
+				} else if(state == State.Hovered)
+					state = State.Idle;
 				
 			} else if (e is MouseButtonPressed) {
 				MouseButtonPressed mbp = (MouseButtonPressed)e;
@@ -85,8 +86,6 @@ namespace HeartFarm
 		public void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
 		{
 			_sprite.Draw(gametime, spriteBatch);
-
-
 		}
 		
 		public void update ()
@@ -106,6 +105,12 @@ namespace HeartFarm
 
 			_sprite.Scale.X = _sprite.Scale.Y = (float)_size/200.0f;
 			hitbox = new Rectangle((int)Position.X, (int)Position.Y, _sprite.Width, _sprite.Height);
+
+			//have it draw the tooltip if the mouse is hovering over it
+			if(state == State.Hovered || state == State.Clicked)
+				EventManager.g_EM.QueueEvent(new DrawToolTip("Size: " + ((int)_size).ToString() + "\n"
+				                                             + "Blood: " + ((int)_bloodAmount).ToString()));
+
 		}
 	}
 }
