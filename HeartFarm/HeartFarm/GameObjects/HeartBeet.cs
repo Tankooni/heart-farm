@@ -15,6 +15,8 @@ namespace HeartFarm
 		State state;
 		public Rectangle hitbox;
 
+		Level parentLevel;
+
 		public enum State
 		{
 			Idle,
@@ -33,12 +35,14 @@ namespace HeartFarm
 			}
 		}
 
-		public HeartBeet (Vector pos, int sentSize = 10, int sentBlood = 5, double sentGrowthRate = .05, double sentBloodRate = .3)
+		public HeartBeet (Vector pos, Level sentLevel, int sentSize = 10, int sentBlood = 5, double sentGrowthRate = .05, double sentBloodRate = .3)
 		{
 			_size = sentSize;
 			_bloodAmount = sentBlood;
 			_rateOfGrowth = sentGrowthRate;
 			_rateOfBlood = sentBloodRate;
+
+			parentLevel = sentLevel;
 
 			_sprite = new BaseSprite(Game1.g_content, "HeartBeet");
 
@@ -72,13 +76,23 @@ namespace HeartFarm
 				}
 			} else if (e is MouseButtonReleased) {
 				//set the state back to idle
-				if (state == State.Clicked) {
-					state = State.Idle;
-
-					_bloodAmount -= 50;
-					Level.BloodLevel+=25;
-//					if (onPressed != null)
-//						onPressed ();
+				if(parentLevel.currentTool == Level.Tools.Syringe)
+				{
+					if (state == State.Clicked) {
+						state = State.Idle;
+						if(_bloodAmount >= 25)
+						{
+						_bloodAmount -= 25;
+						Level.BloodLevel+=25;
+						}
+						else
+						{
+							Level.BloodLevel += (float)_bloodAmount;
+							_bloodAmount = 0;
+						}
+	//					if (onPressed != null)
+	//						onPressed ();
+					}
 				}
 			}
 		}
@@ -86,12 +100,26 @@ namespace HeartFarm
 		public void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
 		{
 			_sprite.Draw(gametime, spriteBatch);
+
+
 		}
 		
 		public void update ()
 		{
-			//make it grow
-			_size += _rateOfGrowth;
+			//make it grow if it has more than 50% blood capacity.
+			if ((_bloodAmount * 2f) > _size) {
+				_size += _rateOfGrowth;
+			}
+			//if it's under 25% blood capacity, it shrinks
+			else if ((_bloodAmount * 4) < _size) 
+			{
+				if(_size > 20)
+				{
+					_size -= _rateOfGrowth;
+				}
+			}
+
+
 			if (_size > 200)
 				_size = 200;
 
@@ -105,12 +133,11 @@ namespace HeartFarm
 
 			_sprite.Scale.X = _sprite.Scale.Y = (float)_size/200.0f;
 			hitbox = new Rectangle((int)Position.X, (int)Position.Y, _sprite.Width, _sprite.Height);
-
+			
 			//have it draw the tooltip if the mouse is hovering over it
 			if(state == State.Hovered || state == State.Clicked)
 				EventManager.g_EM.QueueEvent(new DrawToolTip("Size: " + ((int)_size).ToString() + "\n"
 				                                             + "Blood: " + ((int)_bloodAmount).ToString()));
-
 		}
 	}
 }

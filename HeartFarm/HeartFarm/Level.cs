@@ -27,7 +27,7 @@ namespace HeartFarm
 					plots [i, j] = new FarmPlot (new Vector (j * 64f + 250, i * 64f + 160));
 					if (Game1.rand.Next (100) < 3) {
 						beetPlanted = true;
-						plots [i, j].HeartBeet = new HeartBeet (plots [i, j].Position);
+						plots [i, j].HeartBeet = new HeartBeet (plots [i, j].Position, this);
 					}
 
 				}
@@ -35,7 +35,7 @@ namespace HeartFarm
 			if (!beetPlanted) {
 				int i = Game1.rand.Next (5);
 				int j = Game1.rand.Next (5);
-				plots [i, j].HeartBeet = new HeartBeet (plots [i, j].Position);
+				plots [i, j].HeartBeet = new HeartBeet (plots [i, j].Position, this);
 			}
 		}
 
