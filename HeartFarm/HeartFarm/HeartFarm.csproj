@@ -63,6 +63,8 @@
     <Compile Include="GUISprite.cs" />
     <Compile Include="ScreenManagerAssets\UIAssets\BloodGauge.cs" />
     <Compile Include="ScreenManagerAssets\UIAssets\ToolBar.cs" />
+    <Compile Include="EventManager\Events\MouseButtonPressed.cs" />
+    <Compile Include="EventManager\Events\MouseButtonReleased.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
