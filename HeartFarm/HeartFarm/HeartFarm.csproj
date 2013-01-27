@@ -73,6 +73,9 @@
     <Compile Include="Scenes\SceneLevel.cs" />
     <Compile Include="Scenes\SceneTitle.cs" />
     <Compile Include="EventManager\Events\ChangeScene.cs" />
+    <Compile Include="GameObjects\FarmPlot.cs" />
+    <Compile Include="LevelBackground.cs" />
+    <Compile Include="EventManager\Events\ToolChange.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Icon.png" />
