@@ -37,7 +37,7 @@ namespace HeartFarm
 			Cursor = new BaseSprite(Content, "Syringe");
 			Cursor.Origin.Y = Cursor.Height;
 
-			//add listeners
+			//add the listeners
 			EventManager.g_EM.AddListener(new MousePosition(), this);
 			EventManager.g_EM.AddListener(new DrawToolTip(), this);
 			EventManager.g_EM.AddListener(new DayChanged(), this);
