@@ -24,6 +24,7 @@ namespace HeartFarm
 			//init plot sprite
 			plotSprite = new BaseSprite(Game1.g_content, "PlotTile");
 			plotSprite.Position = pos;
+			plotSprite.Origin = new Vector(plotSprite.Width/2, plotSprite.Height/2, 0);
 		}
 
 		public void Update ()

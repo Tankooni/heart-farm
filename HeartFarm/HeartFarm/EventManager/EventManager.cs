@@ -29,6 +29,7 @@ namespace HeartFarm
 		public void RemoveListener(Event e, Listener l)
 		{
 			//TODO: Implement this
+			EventListeners[e].Remove(l);
 		}
 
 		public void ClearListeners ()

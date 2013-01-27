@@ -33,34 +33,16 @@ namespace HeartFarm
 			}
 		}
 
-		public HeartBeet(Vector pos)
-		{
-			_size = 10;
-			_bloodAmount = _size / 2;
-			_rateOfGrowth = 0.1;
-			_rateOfBlood = 1;
-
-
-
-			_sprite = new BaseSprite(Game1.g_content, "HeartBeet");
-			_sprite.Scale.X = _sprite.Scale.Y = (float)_size/100.0f; 
-			Position = pos;
-
-			EventManager.g_EM.AddListener(new MousePosition(), this);
-			EventManager.g_EM.AddListener(new MouseButtonPressed(), this);
-			EventManager.g_EM.AddListener(new MouseButtonReleased(), this);
-		}
-
-		public HeartBeet (int sentSize, int sentBlood, double sentGrowthRate, double sentBloodRate, Vector pos)
+		public HeartBeet (Vector pos, int sentSize = 10, int sentBlood = 5, double sentGrowthRate = .05, double sentBloodRate = .3)
 		{
 			_size = sentSize;
 			_bloodAmount = sentBlood;
 			_rateOfGrowth = sentGrowthRate;
 			_rateOfBlood = sentBloodRate;
 
-
-			
 			_sprite = new BaseSprite(Game1.g_content, "HeartBeet");
+
+			_sprite.Origin = new Vector(_sprite.Width/2, _sprite.Height/2, 0);
 			_sprite.Scale.X = _sprite.Scale.Y = (float)_size/100.0f;
 			Position = pos;
 
@@ -91,7 +73,6 @@ namespace HeartFarm
 				//set the state back to idle
 				if (state == State.Clicked) {
 					state = State.Idle;
-					Console.WriteLine("Blood Extracted");
 
 					_bloodAmount -= 50;
 					Level.BloodLevel+=25;
@@ -104,6 +85,8 @@ namespace HeartFarm
 		public void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
 		{
 			_sprite.Draw(gametime, spriteBatch);
+
+
 		}
 		
 		public void update ()
