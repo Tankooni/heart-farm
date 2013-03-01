@@ -62,7 +62,6 @@ namespace HeartFarm
 				}
 			} catch (InvalidOperationException e)
 			{
-				Console.Write("Shit");
 			}
 		}
 	}
