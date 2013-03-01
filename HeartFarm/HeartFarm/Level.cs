@@ -11,24 +11,28 @@ namespace HeartFarm
 		public int vials = 0;
 		public int requiredVials = 1;
 
+		public HeartBeet transplant;
 		public int day = 1;
 
 		public enum Tools
 		{
 			Syringe,
 			Spade,
-			Scalpel
+			Scalpel,
+			Heart
 		}
 
 		public Tools currentTool = Tools.Syringe;
 
 		public Level ()
 		{
+			transplant = new HeartBeet(new Vector(0, 0), this);
+
 			plots = new FarmPlot[5, 5];
 			bool beetPlanted = false;
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 5; j++) {
-					plots [i, j] = new FarmPlot (new Vector (j * 64f + 250, i * 64f + 160));
+					plots [i, j] = new FarmPlot (new Vector (j * 64f + 250, i * 64f + 160), this);
 					if (Game1.rand.Next (100) < 3) {
 						beetPlanted = true;
 						plots [i, j].HeartBeet = new HeartBeet (plots [i, j].Position, this);

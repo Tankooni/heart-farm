@@ -12,6 +12,9 @@ namespace HeartFarm
 		ToolBar toodles;
 		BaseSprite Cursor;
 		Level level;
+
+		//MEHHH
+		Texture2D heartTex;
 		
 		SpriteFont font;
 		SpriteFont bigFont;
@@ -24,6 +27,9 @@ namespace HeartFarm
 
 		public UI(ContentManager Content, Level lo)
 		{
+			//MEHH
+			heartTex = Game1.g_content.Load<Texture2D>("HeartBeet");
+
 			level = lo;
 
 			boodles = new BloodGauge(Content);
@@ -112,6 +118,9 @@ namespace HeartFarm
 					break;
 				case (Level.Tools.Scalpel):
 					Cursor.Texture = toodles.scalpel.tool.Texture;
+					break;
+				case (Level.Tools.Heart):
+					Cursor.Texture = heartTex;
 					break;
 				}
 				level.currentTool = tc.tool;

@@ -1,6 +1,7 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
 
 namespace HeartFarm
 {
@@ -30,12 +31,12 @@ namespace HeartFarm
 				if(_sprite != null)
 				{
 					_sprite.Position = value;
-					hitbox = new Rectangle((int)value.X, (int)value.Y, _sprite.Width, _sprite.Height);
+					hitbox = new Rectangle ((int)value.X - _sprite.Width/2, (int)value.Y - _sprite.Height/2, _sprite.Width, _sprite.Height);
 				}
 			}
 		}
 
-		public HeartBeet (Vector pos, Level sentLevel, int sentSize = 10, int sentBlood = 5, double sentGrowthRate = .05, double sentBloodRate = .3)
+		public HeartBeet (Vector pos, Level sentLevel, double sentSize = 125, double sentBlood = 100, double sentGrowthRate = .05, double sentBloodRate = .09)
 		{
 			_size = sentSize;
 			_bloodAmount = sentBlood;
@@ -76,7 +77,7 @@ namespace HeartFarm
 				}
 			} else if (e is MouseButtonReleased) {
 				//set the state back to idle
-				if(parentLevel.currentTool == Level.Tools.Syringe)
+				if(state == State.Clicked && parentLevel.currentTool == Level.Tools.Syringe)
 				{
 					if (state == State.Clicked) {
 						state = State.Idle;
@@ -90,10 +91,20 @@ namespace HeartFarm
 							Level.BloodLevel += (float)_bloodAmount;
 							_bloodAmount = 0;
 						}
-	//					if (onPressed != null)
-	//						onPressed ();
 					}
 				}
+				else if(state == State.Clicked && parentLevel.currentTool == Level.Tools.Scalpel && _size > 124)
+				{
+					_size = (_size / 2) - 10;
+					_bloodAmount = (_bloodAmount / 2) - 20;
+
+					parentLevel.transplant._size = _size;
+					parentLevel.transplant._bloodAmount = _bloodAmount;
+
+					EventManager.g_EM.QueueEvent(new ToolChange(HeartFarm.Level.Tools.Heart));
+					//parentLevel.currentTool = Level.Tools.Heart;
+				}
+				state = State.Idle;
 			}
 		}
 
