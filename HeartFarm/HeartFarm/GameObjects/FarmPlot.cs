@@ -60,6 +60,7 @@ namespace HeartFarm
 			if (e is MousePosition) {
 				MousePosition mp = (MousePosition)e;
 				if (hitbox.Contains (mp.pos.X, mp.pos.Y)) {
+					//Console.WriteLine(hitbox + " " + mp.pos);
 					//mouse is hovering over the button, change the texture
 					if (state == State.Idle)
 						state = State.Hovered;
@@ -69,8 +70,8 @@ namespace HeartFarm
 				
 			} else if (e is MouseButtonPressed) {
 				MouseButtonPressed mbp = (MouseButtonPressed)e;
-				
 				if (state == State.Hovered) {
+					Console.WriteLine("Clicked");
 					state = State.Clicked;
 					//mbp.isDoneProcessing = true;
 				}
@@ -84,8 +85,8 @@ namespace HeartFarm
 						EventManager.g_EM.QueueEvent(new ToolChange(HeartFarm.Level.Tools.Syringe));
 						//parentLevel.currentTool = Level.Tools.Syringe;
 					}
-					state = State.Idle;
 				}
+				state = State.Idle;
 			}
 		}
 
