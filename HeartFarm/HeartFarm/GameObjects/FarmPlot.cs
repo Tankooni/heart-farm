@@ -68,10 +68,15 @@ namespace HeartFarm
 				} else if(state == State.Hovered)
 					state = State.Idle;
 				
-			
+			} else if (e is MouseButtonPressed) {
+				MouseButtonPressed mbp = (MouseButtonPressed)e;
+				if (state == State.Hovered) {
+					state = State.Clicked;
+					//mbp.isDoneProcessing = true;
+				}
 			} else if (e is MouseButtonReleased) {
 				//set the state back to idle
-				if(state == State.Hovered && parentLevel.currentTool == Level.Tools.Heart)
+				if(state == State.Clicked && parentLevel.currentTool == Level.Tools.Heart)
 				{
 					if(beet == null)
 					{
