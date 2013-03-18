@@ -45,7 +45,6 @@ namespace HeartFarm
 
 			Drawer.Init(spriteBatch.GraphicsDevice);
 			SoundManager.Init(Content);
-			SoundManager.Volume = 0;
 			g_inputManager = new InputManager();
 
 			EventManager.g_EM.AddListener(new ChangeScene(), this);

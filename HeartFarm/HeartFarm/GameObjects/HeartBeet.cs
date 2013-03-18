@@ -7,8 +7,6 @@ namespace HeartFarm
 {
 	public class HeartBeet : Listener
 	{
-		public static int HeartNum = 0;
-		public int heartNum;
 		public double _size;
 		public double _bloodAmount;
 		public double _rateOfGrowth;
@@ -40,7 +38,6 @@ namespace HeartFarm
 
 		public HeartBeet (Vector pos, Level sentLevel, double sentSize = 125, double sentBlood = 100, double sentGrowthRate = .05, double sentBloodRate = .09)
 		{
-			heartNum = HeartNum++;
 			_size = sentSize;
 			_bloodAmount = sentBlood;
 			_rateOfGrowth = sentGrowthRate;
@@ -53,7 +50,6 @@ namespace HeartFarm
 			_sprite.Origin = new Vector(_sprite.Width/2, _sprite.Height/2, 0);
 			_sprite.Scale.X = _sprite.Scale.Y = (float)_size/100.0f;
 			Position = pos;
-			Console.WriteLine(heartNum);
 			EventManager.g_EM.AddListener(new MousePosition(), this);
 			EventManager.g_EM.AddListener(new MouseButtonPressed(), this);
 			EventManager.g_EM.AddListener(new MouseButtonReleased(), this);
@@ -122,7 +118,6 @@ namespace HeartFarm
 		public void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
 		{
 			_sprite.Draw(gametime, spriteBatch);
-			Drawer.drawRect (spriteBatch, hitbox, Color.Red);
 		}
 		
 		public void update ()

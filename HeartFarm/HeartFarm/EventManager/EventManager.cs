@@ -22,10 +22,8 @@ namespace HeartFarm
 
 		public void AddListener(Event e, Listener l)
 		{
-			if(l.ToString() == "HeartFarm.HeartBeet")Console.WriteLine ("HeartBeet Event: " + e);
 			if (!EventListeners.ContainsKey (e)) {
 				EventListeners.Add (e, new List<Listener> ());
-				if(l.ToString() == "HeartFarm.HeartBeet")Console.WriteLine("New Key Added");
 			}
 			EventListeners[e].Add (l);
 		}
@@ -56,7 +54,6 @@ namespace HeartFarm
 
 					if (!EventListeners.ContainsKey (e))
 						break;
-					Console.WriteLine(EventListeners[e].Count);
 					//call each listener registered to this event type
 					for(int i = EventListeners[e].Count-1; i >= 0; i--)
 					{
