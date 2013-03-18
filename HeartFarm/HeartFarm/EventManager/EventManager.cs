@@ -11,7 +11,7 @@ namespace HeartFarm
 
 		Dictionary<Event, List<Listener>> EventListeners = new Dictionary<Event, List<Listener>>();
 		Queue<Event> Events = new Queue<Event>();
-		List<
+
 
 		static EventManager()
 		{
@@ -56,13 +56,20 @@ namespace HeartFarm
 
 					if (!EventListeners.ContainsKey (e))
 						break;
-
+					Console.WriteLine(EventListeners[e].Count);
 					//call each listener registered to this event type
-					foreach (Listener l in EventListeners[e]) {
-						l.OnEvent (e);
-						if (e.isDoneProcessing)
-							break;
+					for(int i = EventListeners[e].Count-1; i >= 0; i--)
+					{
+
+						EventListeners[e][i].OnEvent (e);
+
 					}
+
+//					foreach (Listener l in EventListeners[e]) {
+//						l.OnEvent (e);
+//						if (e.isDoneProcessing)
+//							break;
+//					}
 					//Console.WriteLine("---------------------------------------------------");
 				}
 			} catch (InvalidOperationException e)
