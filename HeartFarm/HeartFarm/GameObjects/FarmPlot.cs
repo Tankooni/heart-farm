@@ -92,8 +92,11 @@ namespace HeartFarm
 
 		public void Update ()
 		{
-			if(beet != null)
-				beet.update();
+			if (beet != null) {
+				beet.update ();
+				if(beet._bloodAmount <= 0)
+					beet = null;
+			}
 		}
 
 		public void Draw (SpriteBatch sb, GameTime gt)
