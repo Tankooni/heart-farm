@@ -24,6 +24,11 @@ namespace HeartFarm
 			SB.Draw(white, pos.toVector2(), new Rectangle(0, 0, (int)size.X, (int)size.Y), color);
 		}
 
+		public static void drawRect(SpriteBatch SB, Rectangle rec,Color color)
+		{
+			SB.Draw(white, new Vector2(rec.X, rec.Y), rec, color);
+		}
+
 		public static void drawNight(SpriteBatch SB)
 		{
 			SB.Draw(night, Vector2.Zero, new Rectangle(0, 0, (int)Game1.ScreenSize.X, (int)Game1.ScreenSize.Y), Color.White);

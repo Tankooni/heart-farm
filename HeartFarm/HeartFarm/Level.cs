@@ -34,8 +34,8 @@ namespace HeartFarm
 				for (int j = 0; j < 5; j++) {
 					plots [i, j] = new FarmPlot (new Vector (j * 64f + 250, i * 64f + 160), this);
 					if (Game1.rand.Next (100) < 3) {
-						beetPlanted = true;
-						plots [i, j].HeartBeet = new HeartBeet (plots [i, j].Position, this);
+						//beetPlanted = true;
+						//plots [i, j].Beet = new HeartBeet (plots [i, j].Position, this);
 					}
 
 				}
@@ -43,7 +43,7 @@ namespace HeartFarm
 			if (!beetPlanted) {
 				int i = Game1.rand.Next (5);
 				int j = Game1.rand.Next (5);
-				plots [i, j].HeartBeet = new HeartBeet (plots [i, j].Position, this);
+				plots [i, j].Beet = new HeartBeet (plots [i, j].Position, this);
 			}
 
 			//add listeners
@@ -53,7 +53,6 @@ namespace HeartFarm
 		public override void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
 		{
 			//throw new System.NotImplementedException ();
-
 			for (int i = 0; i < 5; i++) {
 				for (int j = 0; j < 5; j++) {
 					plots [i, j].Draw(spriteBatch, gametime);

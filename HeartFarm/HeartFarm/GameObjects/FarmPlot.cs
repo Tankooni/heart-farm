@@ -23,7 +23,7 @@ namespace HeartFarm
 
 		State state;
 
-		public HeartBeet HeartBeet {
+		public HeartBeet Beet {
 			get { return beet;}
 			set { beet = value;}
 		}
