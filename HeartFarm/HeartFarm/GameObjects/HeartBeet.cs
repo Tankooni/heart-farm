@@ -7,6 +7,8 @@ namespace HeartFarm
 {
 	public class HeartBeet : Listener
 	{
+		public static int HeartNum = 0;
+		public int heartNum;
 		public double _size;
 		public double _bloodAmount;
 		public double _rateOfGrowth;
@@ -38,6 +40,7 @@ namespace HeartFarm
 
 		public HeartBeet (Vector pos, Level sentLevel, double sentSize = 125, double sentBlood = 100, double sentGrowthRate = .05, double sentBloodRate = .09)
 		{
+			heartNum = HeartNum++;
 			_size = sentSize;
 			_bloodAmount = sentBlood;
 			_rateOfGrowth = sentGrowthRate;
@@ -50,7 +53,7 @@ namespace HeartFarm
 			_sprite.Origin = new Vector(_sprite.Width/2, _sprite.Height/2, 0);
 			_sprite.Scale.X = _sprite.Scale.Y = (float)_size/100.0f;
 			Position = pos;
-
+			Console.WriteLine(heartNum);
 			EventManager.g_EM.AddListener(new MousePosition(), this);
 			EventManager.g_EM.AddListener(new MouseButtonPressed(), this);
 			EventManager.g_EM.AddListener(new MouseButtonReleased(), this);
@@ -58,6 +61,7 @@ namespace HeartFarm
 
 		public void OnEvent (Event e)
 		{
+			//Console.WriteLine(heartNum);
 			if (e is MousePosition) {
 				MousePosition mp = (MousePosition)e;
 				if (hitbox.Contains (mp.pos.X, mp.pos.Y)) {
@@ -93,6 +97,13 @@ namespace HeartFarm
 						}
 					}
 				}
+				else if(state == State.Clicked && parentLevel.currentTool == Level.Tools.Spade)
+				{
+					Level.BloodLevel += (float)this._bloodAmount * 2.5f;
+					this._bloodAmount = 0;
+					this._size = 0;
+					
+				}
 				else if(state == State.Clicked && parentLevel.currentTool == Level.Tools.Scalpel && _size > 124)
 				{
 					_size = (_size / 2) - 10;
@@ -111,8 +122,7 @@ namespace HeartFarm
 		public void draw (Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Microsoft.Xna.Framework.GameTime gametime)
 		{
 			_sprite.Draw(gametime, spriteBatch);
-
-
+			Drawer.drawRect (spriteBatch, hitbox, Color.Red);
 		}
 		
 		public void update ()
@@ -144,11 +154,13 @@ namespace HeartFarm
 
 			_sprite.Scale.X = _sprite.Scale.Y = (float)_size/200.0f;
 			hitbox = new Rectangle((int)Position.X - _sprite.Width/2, (int)Position.Y - _sprite.Height/2, _sprite.Width, _sprite.Height);
-			
+
 			//have it draw the tooltip if the mouse is hovering over it
-			if(state == State.Hovered || state == State.Clicked)
-				EventManager.g_EM.QueueEvent(new DrawToolTip("Size: " + ((int)_size).ToString() + "\n"
-				                                             + "Blood: " + ((int)_bloodAmount).ToString()));
+			if (state == State.Hovered || state == State.Clicked) {
+				//Console.WriteLine (heartNum + ": " + hitbox);
+				EventManager.g_EM.QueueEvent (new DrawToolTip ("Size: " + ((int)_size).ToString () + "\n"
+					+ "Blood: " + ((int)_bloodAmount).ToString ()));
+			}
 		}
 	}
 }
